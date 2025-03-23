@@ -17,8 +17,24 @@
 - スマートフォン対応デザイン
 - QRコードで簡単アクセス可
 
-## 🌐 公開ページ
+## 公開ページ
 
 👉 [こちらをクリックしてサイトを見る](https://your-username.github.io/your-repo-name/)  
 
-## 📁 フォルダ構成
+## フォルダ構成
+
+## 使用技術
+
+- HTML / CSS
+- GitHub Pages
+- Googleフォーム（応募用）
+- Google Apps Script（自動返信メール用）
+- Googleカレンダー or Calendly（面接日予約用・任意）
+
+## 応募フォーム設定方法（Googleフォーム）
+
+1. Googleフォームで必要項目（名前、メール、希望勤務日など）を作成
+2. 回答先にスプレッドシートを指定
+3. 自動返信したい場合は Google Apps Script を使って設定  
+   （→ `onFormSubmit` トリガーでメール送信）
+
