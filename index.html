@@ -18,6 +18,7 @@
   /* left は JSで設定 */
   transform: translateY(-30%);
   display: flex;
+  left:200px
   flex-direction: column;
   gap: 20px;
   padding: 10px;
@@ -112,21 +113,7 @@ section.access {
   <h2>アクセス</h2>
   <p>地図など</p>
 </section>
-<script>
-  function updateSidebarPosition() {
-    const container = document.querySelector("section"); // 最初のセクション
-    const sidebar = document.querySelector(".sidebar");
 
-    if (container && sidebar) {
-      const containerLeft = container.getBoundingClientRect().left + window.scrollX;
-      const sidebarLeft = containerLeft / 2; // 画面左端とメイン左端の中間
-      sidebar.style.left = `${sidebarLeft}px`;
-    }
-  }
-
-  window.addEventListener("load", updateSidebarPosition);
-  window.addEventListener("resize", updateSidebarPosition);
-</script>
   
 </body>
 </html>
