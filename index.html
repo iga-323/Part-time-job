@@ -38,12 +38,14 @@
       justify-content: space-between;
       flex-wrap: nowrap;
       width: 1000px;
-      gap: 50;
+      gap: 50px;
       padding: 10px;
     }
 
     .tab {
-      background-color: #DD143C;
+      flex: 0 0 130px; /* ← 横幅を固定：130pxなど好きな幅 */
+      text-align: center;
+      background-color: #F08080;
       border: 3px solid #333;
       padding: 8px 14px;
       border-radius: 5px;
@@ -70,7 +72,7 @@
     section {
       max-width: 1000px;
       margin: 0 auto;
-      padding: 10px 10px 100px;
+      padding: 5px 10px 100px;
     }
 
     section.shift   { background-color: #fff8e1; }
