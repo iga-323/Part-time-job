@@ -12,46 +12,67 @@
       scroll-behavior: smooth;
     }
 
-    /* バナー部分（ナビゲーション背景） */
-    .banner {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: #fdf5e6; /* ←←← 背景色ここで変更できます */
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      z-index: 1000;
-    }
+  <style>
+  /* 共通スタイルは省略。以下はバナー部分だけ */
 
-    /* バナー内の中央寄せ＆横幅調整 */
+  .banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fdf5e6;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+    overflow-x: auto; /* 横スクロールを可能にする */
+    white-space: nowrap;
+  }
+
+  .banner-inner {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    max-width: 1000px;
+    margin: 0 auto;
+    justify-content: center;
+  }
+
+  .tab {
+    background-color: #20B2AA;
+    border: 2px solid #333;
+    padding: 8px 14px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: transform 0.2s, background-color 0.2s;
+    text-align: center;
+    white-space: nowrap;
+    flex-shrink: 0; /* 小さくならずに横に並べる */
+  }
+
+  .tab:hover {
+    transform: scale(1.1);
+    background-color: #f0f0f0;
+    color: #333;
+  }
+
+  /* 本文がバナーに隠れないように、上に余白を確保 */
+  body {
+    padding-top: 70px; /* バナーの高さ分だけ空ける */
+  }
+
+  /* レスポンシブ時の調整 */
+  @media screen and (max-width: 600px) {
     .banner-inner {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      padding: 10px;
+      justify-content: flex-start;
+      padding-left: 20px;
     }
 
     .tab {
-      background-color: #20B2AA;
-      border: 2px solid #333;
-      padding: 8px 14px;
-      border-radius: 5px;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      transition: transform 0.2s, background-color 0.2s;
-      text-align: center;
-      white-space: nowrap;
+      min-width: 120px;
     }
-
-    .tab:hover {
-      transform: scale(1.1);
-      background-color: #f0f0f0;
-      color: #333;
-    }
+  }
+</style>
 
     /* メインセクション共通 */
     section {
