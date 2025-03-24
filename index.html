@@ -10,11 +10,10 @@
       margin: 0;
       font-family: sans-serif;
       scroll-behavior: smooth;
-      padding-top: 40px; /* バナー高さ分の余白 */
+      padding-top: 90px;
     }
 
-    /* 上部固定バナー枠（中央に固定幅） */
-    .banner {
+    .banner-wrapper {
       position: fixed;
       top: 0;
       left: 50%;
@@ -23,9 +22,27 @@
       background-color: #fdf5e6;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       z-index: 1000;
+      display: flex;
+      align-items: center;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .arrow {
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      padding: 10px;
+      user-select: none;
+    }
+
+    .banner {
       overflow-x: auto;
       white-space: nowrap;
-      border-radius: 8px;
+      flex: 1;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
     }
 
     .banner-inner {
@@ -42,15 +59,20 @@
       text-decoration: none;
       color: white;
       font-weight: bold;
-      transition: transform 0.2s, background-color 0.2s;
       white-space: nowrap;
       flex-shrink: 0;
+      transition: transform 0.2s, background-color 0.2s;
     }
 
     .tab:hover {
       transform: scale(1.1);
       background-color: #f0f0f0;
       color: #333;
+    }
+
+    .tab.active {
+      background-color: #ffa500;
+      color: #fff;
     }
 
     section {
@@ -64,37 +86,31 @@
     section.salary  { background-color: #f9f9f9; }
     section.form    { background-color: #e8f5e9; }
     section.access  { background-color: #ffe4e1; }
+    section.contact { background-color: #fce4ec; }
 
     h2 {
       margin-top: 0;
-    }
-
-    /* スクロールバー隠したい場合（オプション） */
-    .banner::-webkit-scrollbar {
-      display: none;
-    }
-    .banner {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
     }
   </style>
 </head>
 <body>
 
-  <!-- バナー -->
-  <div class="banner">
-    <div class="banner-inner">
-      <a href="#shift" class="tab">シフト</a>
-      <a href="#job" class="tab">仕事内容</a>
-      <a href="#salary" class="tab">給料</a>
-      <a href="#form" class="tab">応募フォーム</a>
-      <a href="#access" class="tab">アクセス</a>
-      <a href="#contact" class="tab">連絡先</a>
-      <a href="https://example.com" target="_blank" class="tab">公式HP</a>
+  <div class="banner-wrapper">
+    <button class="arrow" id="leftBtn">←</button>
+    <div class="banner" id="banner">
+      <div class="banner-inner">
+        <a href="#shift" class="tab">シフト</a>
+        <a href="#job" class="tab">仕事内容</a>
+        <a href="#salary" class="tab">給料</a>
+        <a href="#form" class="tab">応募フォーム</a>
+        <a href="#access" class="tab">アクセス</a>
+        <a href="#contact" class="tab">連絡先</a>
+        <a href="https://example.com" class="tab" target="_blank">公式HP</a>
+      </div>
     </div>
+    <button class="arrow" id="rightBtn">→</button>
   </div>
 
-  <!-- 本文 -->
   <section class="shift" id="shift">
     <h2>シフト</h2><p>内容...</p>
   </section>
@@ -110,9 +126,40 @@
   <section class="access" id="access">
     <h2>アクセス</h2><p>地図など</p>
   </section>
-  <section class="access" id="contact">
+  <section class="contact" id="contact">
     <h2>連絡先</h2><p>電話番号やLINEなど</p>
   </section>
 
+  <script>
+    // 矢印スクロール
+    const banner = document.getElementById('banner');
+    document.getElementById('leftBtn').onclick = () => banner.scrollBy({ left: -200, behavior: 'smooth' });
+    document.getElementById('rightBtn').onclick = () => banner.scrollBy({ left: 200, behavior: 'smooth' });
+
+    // 中央寄せ（初期）
+    window.addEventListener('load', () => {
+      banner.scrollLeft = (banner.scrollWidth - banner.clientWidth) / 2;
+    });
+
+    // アクティブタブハイライト
+    const tabs = document.querySelectorAll('.tab');
+    const sections = document.querySelectorAll('section');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+      tabs.forEach(tab => {
+        tab.classList.remove('active');
+        if (tab.getAttribute('href') === `#${current}`) {
+          tab.classList.add('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
