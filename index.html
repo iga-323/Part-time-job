@@ -114,13 +114,13 @@ section.access {
 </section>
 <script>
   function updateSidebarPosition() {
-    const container = document.querySelector("section"); // 中央のセクション
+    const container = document.querySelector("section"); // 最初のセクション
     const sidebar = document.querySelector(".sidebar");
 
     if (container && sidebar) {
       const containerLeft = container.getBoundingClientRect().left + window.scrollX;
-      const leftOffset = containerLeft / 2;
-      sidebar.style.left = `${leftOffset}px`;
+      const sidebarLeft = containerLeft / 2; // 画面左端とメイン左端の中間
+      sidebar.style.left = `${sidebarLeft}px`;
     }
   }
 
