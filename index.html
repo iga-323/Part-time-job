@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>バイト情報ページ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- スマホ対応 -->
   <style>
     body {
       background-color: #B0E0E6;
@@ -11,107 +12,116 @@
       scroll-behavior: smooth;
     }
 
-    /* 左の固定タブバー */
-   .sidebar {
-  position: fixed;
-  top: 0%;
-  display: flex;
-  left:200px
-  flex-direction: row;
-  gap: 20px;
-  padding: 10px;
-  z-index: 1000;
-}
+    /* バナー部分（ナビゲーション背景） */
+    .banner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #fdf5e6; /* ←←← 背景色ここで変更できます */
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+
+    /* バナー内の中央寄せ＆横幅調整 */
+    .banner-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px;
+    }
 
     .tab {
       background-color: #20B2AA;
-      border: 3px solid #333;
-      padding: 8px 10px;
+      border: 2px solid #333;
+      padding: 8px 14px;
       border-radius: 5px;
       text-decoration: none;
       color: white;
       font-weight: bold;
       transition: transform 0.2s, background-color 0.2s;
       text-align: center;
-      min-width: 120px;
+      white-space: nowrap;
     }
 
     .tab:hover {
       transform: scale(1.1);
-      background-color: #f0f0f0;;
+      background-color: #f0f0f0;
+      color: #333;
     }
 
-    /* 各セクションの見た目 */
+    /* メインセクション共通 */
     section {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px 10px;
-  　}
-    
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 100px 20px 40px;
+    }
 
-    section.shift {
-  background-color: #fff8e1; /* ベージュ系 */
-}
-
-section.job {
-  background-color: #e6f0ff; /* 水色系 */
-}
-
-section.salary {
-  background-color: #f9f9f9; /* 明るいグレー */
-}
-
-section.form {
-  background-color: #e8f5e9; /* 薄いグリーン系 */
-}
-
-section.access {
-  background-color: #ffe4e1; /* ピンク系 */
-}
+    /* セクションごとの背景色 */
+    section.shift   { background-color: #fff8e1; }
+    section.job     { background-color: #e6f0ff; }
+    section.salary  { background-color: #f9f9f9; }
+    section.form    { background-color: #e8f5e9; }
+    section.access  { background-color: #ffe4e1; }
 
     h2 {
-      margin-top: 50;
+      margin-top: 0;
+    }
+
+    /* レスポンシブ対応 */
+    @media screen and (max-width: 600px) {
+      .banner-inner {
+        flex-direction: column;
+        align-items: center;
+      }
+      .tab {
+        min-width: 80%;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- 左側の固定タブ -->
-  <div class="sidebar">
-    <a href="#shift" class="tab">シフト</a>
-    <a href="#job" class="tab">仕事内容</a>
-    <a href="#salary" class="tab">給料</a>
-    <a href="#form" class="tab">応募フォーム</a>
-    <a href="#access" class="tab">アクセス</a>
-    <a href="https://example.com" target="_blank" class="tab">公式HP</a>
+
+  <!-- 上部固定のバナー -->
+  <div class="banner">
+    <div class="banner-inner">
+      <a href="#shift" class="tab">シフト</a>
+      <a href="#job" class="tab">仕事内容</a>
+      <a href="#salary" class="tab">給料</a>
+      <a href="#form" class="tab">応募フォーム</a>
+      <a href="#access" class="tab">アクセス</a>
+      <a href="https://example.com" target="_blank" class="tab">公式HP</a>
+    </div>
   </div>
 
-  <!-- メインのコンテンツ -->
-  
- <section class="shift">
-  <h2>シフト</h2>
-  <p>内容...</p>
-</section>
+  <!-- メインの本文 -->
+  <section class="shift" id="shift">
+    <h2>シフト</h2>
+    <p>内容...</p>
+  </section>
 
-<section class="job">
-  <h2>仕事内容</h2>
-  <p>内容...</p>
-</section>
+  <section class="job" id="job">
+    <h2>仕事内容</h2>
+    <p>内容...</p>
+  </section>
 
-<section class="salary">
-  <h2>給料</h2>
-  <p>内容...</p>
-</section>
+  <section class="salary" id="salary">
+    <h2>給料</h2>
+    <p>内容...</p>
+  </section>
 
-<section class="form">
-  <h2>応募フォーム</h2>
-  <p>Googleフォームなど</p>
-</section>
+  <section class="form" id="form">
+    <h2>応募フォーム</h2>
+    <p>Googleフォームなど</p>
+  </section>
 
-<section class="access">
-  <h2>アクセス</h2>
-  <p>地図など</p>
-</section>
+  <section class="access" id="access">
+    <h2>アクセス</h2>
+    <p>地図など</p>
+  </section>
 
-  
 </body>
 </html>
