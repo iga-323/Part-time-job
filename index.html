@@ -2,87 +2,103 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>バイト求人</title>
+  <title>バイト情報ページ</title>
   <style>
     body {
-      background-color: black;
-      font-family: sans-serif;
       margin: 0;
-      padding: 0;
+      font-family: sans-serif;
+      scroll-behavior: smooth;
     }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto; /* 中央に寄せる */
-      padding: 40px 20px;
-      background-color: #DCD6D2;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
-      border-radius: 10px;
+    /* 左の固定タブバー */
+    .sidebar {
+      position: fixed;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 10px;
+      z-index: 1000;
     }
 
-    html {
-      scroll-behavior: smooth; /* スムーズスクロール */
+    .tab {
+      background-color: white;
+      border: 2px solid #333;
+      padding: 10px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      transition: transform 0.2s, background-color 0.2s;
+      text-align: center;
+      min-width: 100px;
+    }
+
+    .tab:hover {
+      transform: scale(1.1);
+      background-color: #f0f0f0;
+    }
+
+    /* 各セクションの見た目 */
+    section {
+      padding: 100px 40px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    section:nth-of-type(odd) {
+      background-color: #f9f9f9;
+    }
+
+    section:nth-of-type(even) {
+      background-color: #e6f0ff;
+    }
+
+    h2 {
+      margin-top: 0;
     }
   </style>
 </head>
 <body>
-<script>
-  window.onload = function() {
-    window.scrollTo(0, 0);
-  };
-</script>
-  <div class="container">
-    <h1>バイト求人</h1>
 
-    <h3>ご覧いただき、ありがとうございます。</h3>
-    <h3>こちらのサイトは○○のアルバイト応募者様向けのページとなっております。</h3>
-    <ul> 
-      <li><a href="#form">バイトのお申し込みはこちら</a></li>
-    </ul>
-<hr style="border: 1px solid #ccc; width: 100%;">
-    <h2>シフトについて</h2>
-    <h3>シフトは朝と夜で分かれております。</h3>
-    <h3>朝</h3>
-    <h3>開始 (9:00〜) ／ 終了 (12:00~)</h3>
-    <h3>夜</h3>
-    <h3>開始 (17:30〜18:00) ／ 終了 (22:00〜23:30)</h3>
-    <h3>基本的には上記の勤務時間となりますが、途中からの勤務や途中退勤も可能です。</h3>
-    <h3>（例）5/11 夜は18:00〜 のようにLINEで伝えていただければ大丈夫です。</h3>
-    <h3>時給は朝・夜どちらも　円　となります。</h3>
-    <h3>シフトの提出は月末に来月のシフトをLINEで提出していただきます。</h3>
-    <h3>(例)</h3>
-    <h3>写真</h3>
-<hr style="border: 1px solid #ccc; width: 100%;">
-    <h2>仕事内容一覧</h2>
-    <ul> 
-      <li><a href="#morning">【朝】布団上げ</a></li>
-      <li><a href="#night">【夜】布団敷き</a></li>
-      <li><a href="#both">【朝・夜 共通】食器洗い、片付け・会場設営</a></li>
-    </ul>
-
-<hr style="border: 1px solid #ccc; width: 100%;">
-
-    <h2 id="morning">【朝】布団上げ</h2>
-    <p>各部屋のシーツ・枕カバーを回収し、布団をタンスに戻します。</p>
-<hr style="border: 1px solid #ccc; width: 100%;">
-    <h2 id="night">【夜】布団敷き</h2>
-    <p>3人1組で各部屋の布団を敷きます。</p>
-<hr style="border: 1px solid #ccc; width: 100%;">
-    <h2 id="both">【朝・夜 共通】食器洗い、片付け・会場設営</h2>
-    <p>洗浄機で食器を洗い、所定の位置に戻します。</p>
-    <p>図面通りに机や椅子、演台などを運びます。</p>
-<hr style="border: 1px solid #ccc; width: 100%;">
-    <h2 id="form">バイト申し込みフォーム</h2>
-    <p>ここにグーグルフォームを入れる</p>
-    <h3>申し込みが完了いたしますとご登録いただいたメールアドレスに確認メールを送らせていただきます。</h3>
-<hr style="border: 1px solid #ccc; width: 100%;">
-    <h2>立地</h2>
-    <h3>地図を入れる</h3>
-    <h3>正面玄関</h3>
-    <h3>車の場合</h3>
-    <h3>自転車の場合</h3>
+  <!-- 左側の固定タブ -->
+  <div class="sidebar">
+    <a href="#shift" class="tab">シフト</a>
+    <a href="#job" class="tab">仕事内容</a>
+    <a href="#salary" class="tab">給料</a>
+    <a href="#form" class="tab">応募フォーム</a>
+    <a href="#access" class="tab">アクセス</a>
+    <a href="https://example.com" target="_blank" class="tab">公式HP</a>
   </div>
 
-  
+  <!-- メインのコンテンツ -->
+  <section id="shift">
+    <h2>シフト</h2>
+    <p>シフトは朝と夜に分かれています。柔軟な対応も可能です。</p>
+  </section>
+
+  <section id="job">
+    <h2>仕事内容</h2>
+    <p>布団敷き、片付け、食器洗い、会場設営などがあります。</p>
+  </section>
+
+  <section id="salary">
+    <h2>給料</h2>
+    <p>時給は〇〇円。深夜手当あり。交通費も支給。</p>
+  </section>
+
+  <section id="form">
+    <h2>応募フォーム</h2>
+    <p>以下のGoogleフォームからご応募ください。</p>
+    <!-- Googleフォームのiframeなどをここに -->
+  </section>
+
+  <section id="access">
+    <h2>アクセス</h2>
+    <p>〇〇駅から徒歩5分。地図や写真を掲載予定。</p>
+  </section>
+
 </body>
 </html>
