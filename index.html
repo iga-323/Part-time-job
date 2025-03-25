@@ -194,12 +194,7 @@
           current = section.getAttribute('id');
         }
       });
-      tabs.forEach(tab => {
-        tab.classList.remove('active');
-        if (tab.getAttribute('href') === `#${current}`) {
-          tab.classList.add('active');
-        }
-      });
+      
     });
   </script>
 </body>
