@@ -31,7 +31,10 @@
       width: 100%;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;     /* ← スクロールを気持ちよく */
+      scrollbar-width: thin;             /* Firefoxでスクロールバー表示（オプション） */
     }
+    
 
     .banner-inner {
       display: flex;
