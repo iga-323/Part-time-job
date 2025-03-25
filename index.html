@@ -28,22 +28,17 @@
     }
 
     .banner {
-      width: 100%;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
-      scroll-snap-type: x mandatory;     /* ← スクロールを気持ちよく */
-      scrollbar-width: thin;             /* Firefoxでスクロールバー表示（オプション） */
+      white-space: nowrap;
     }
-    
 
     .banner-inner {
       display: flex;
-      justify-content: center;
+      flex-wrap: nowrap;
+      width: max-content;
       gap: 20px;
       padding: 10px;
-      width: 100%;
-      max-width: 1000px;
-      margin: 0 auto;
     }
 
     .tab {
