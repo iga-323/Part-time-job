@@ -187,6 +187,14 @@
     const tabs = document.querySelectorAll('.tab');
     const sections = document.querySelectorAll('section');
 
+    // ページ読み込み時にバナーを左端にスクロール
+    window.addEventListener('load', () => {
+      const banner = document.querySelector('.banner');
+      if (banner) {
+        banner.scrollLeft = 0; // 一番左にスクロール
+      }
+    });
+
     window.addEventListener('scroll', () => {
       let current = '';
       sections.forEach(section => {
