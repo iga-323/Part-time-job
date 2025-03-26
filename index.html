@@ -34,7 +34,7 @@
       -webkit-overflow-scrolling: touch;
       white-space: nowrap;
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
     }
 
     .banner-inner {
@@ -42,8 +42,7 @@
       flex-wrap: nowrap;
       gap: 20px;
       padding: 10px;
-      min-width: auto;
-      justify-content: center;
+      min-width: max-content;
     }
 
     .tab {
@@ -95,17 +94,17 @@
     }
 
     @media screen and (max-width: 1000px) {
-  .banner-wrapper {
-    width: 100%;
-  }
-  .banner-inner {
-    width: max-content;
-    justify-content: flex-start; /* ←ここを追加 or 上書き */
-  }
-  h1 {
-    font-size: clamp(20px, 5vw, 36px);
-  }
-}
+      .banner-wrapper {
+        width: 100%;
+      }
+      .banner-inner {
+        width: max-content;
+        justify-content: flex-start;
+      }
+      h1 {
+        font-size: clamp(20px, 5vw, 36px);
+      }
+    }
   </style>
 </head>
 <body>
@@ -183,27 +182,27 @@
     <div class="line-space"></div>
   </section>
 
- <script>
-  const tabs = document.querySelectorAll('.tab');
-  const sections = document.querySelectorAll('section');
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const sections = document.querySelectorAll('section');
 
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 70;
-      if (pageYOffset >= sectionTop) {
-        current = section.getAttribute('id');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 70;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+    });
+
+    // 初期表示でバナーを左端にスクロール
+    window.addEventListener('load', () => {
+      const banner = document.querySelector('.banner');
+      if (banner) {
+        banner.scrollLeft = 0;
       }
     });
-  });
-
-  
-  window.addEventListener('load', () => {
-    const banner = document.querySelector('.banner');
-    if (banner) {
-      banner.scrollLeft = 0;
-    }
-  });
-</script>
+  </script>
 </body>
 </html>
