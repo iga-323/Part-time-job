@@ -7,11 +7,11 @@
   <style>
     /* 基本設定 */
     body {
-      background-color: #B0E0E6; /* ページ背景色 */
+      background-color: #B0E0E6; /* 背景色 */
       margin: 0;
       font-family: sans-serif;
       scroll-behavior: smooth;
-      padding-top: 70px; /* ヘッダーの高さ分余白 */
+      padding-top: 70px; /* ヘッダー分の余白 */
     }
 
     /* ヘッダーバナー */
@@ -25,7 +25,7 @@
       z-index: 1000;
       border-radius: 8px;
       overflow: hidden;
-      max-width: 1200px; /* バナーの最大幅 */
+      max-width: 1200px;
       margin: 0 auto;
     }
 
@@ -49,8 +49,8 @@
 
     .tab {
       flex: 1;
-      min-width: 80px; /* タブの最小幅 */
-      max-width: 120px; /* タブの最大幅 */
+      min-width: 80px;
+      max-width: 120px;
       text-align: center;
       background-color: #F08080;
       border: 3px solid #333;
@@ -67,7 +67,7 @@
     /* セクションスタイル */
     section {
       scroll-margin-top: 70px;
-      max-width: 1000px; /* コンテンツの最大幅 */
+      max-width: 1000px;
       margin: 0 auto;
       padding: 20px;
     }
@@ -80,44 +80,79 @@
     section.form { background-color: #e8f5e9; }
     section.access { background-color: #ffe4e1; }
 
+    h2 {
+      margin-top: 0;
+      color: #2c3e50;
+      text-align: left;
+    }
+
     /* カード基本スタイル */
     .card {
       background-color: white;
-      border-radius: 8px; /* 角の丸み */
+      border-radius: 8px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      padding: 20px; /* 内側の余白 */
-      margin-bottom: 20px; /* カード間の間隔 */
+      padding: 20px;
+      margin-bottom: 20px;
       word-break: break-word;
       overflow: hidden;
       text-align: left;
       max-width: 100%;
     }
 
-    /* テキストカード（中央配置用） */
-    .text-card {
-      text-align: left;
+    /* シフト表スタイル */
+    .shift-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
     }
 
-    /* ボタン専用カード */
-    .button-card {
+    .shift-table th, .shift-table td {
+      border: 1px solid #ddd;
+      padding: 10px;
       text-align: center;
-      padding: 30px 20px; /* ボタン周りの余白 */
-      background-color: #f8f9fa; /* 薄い背景色 */
+    }
+
+    .shift-table th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+
+    /* Googleマップカード */
+    .map-card {
+      text-align: center;
+      padding: 25px 20px;
+      background-color: #f8f9fa;
+    }
+
+    .map-link {
+      display: inline-block;
+      padding: 12px 20px;
+      background-color: #4285F4;
+      color: white;
+      border-radius: 4px;
+      text-decoration: none;
+      margin-top: 15px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .map-link:hover {
+      background-color: #3367d6;
     }
 
     /* 画像付きカード */
     .image-card {
       display: flex;
       align-items: flex-start;
-      gap: 20px; /* 画像とテキストの間隔 */
+      gap: 20px;
     }
 
     .image-card img {
-      width: 250px; /* 画像の幅 */
-      height: 180px; /* 画像の高さ */
+      width: 250px;
+      height: 180px;
       border-radius: 5px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-      object-fit: cover; /* 画像のトリミング方法 */
+      object-fit: cover;
       flex-shrink: 0;
     }
 
@@ -129,8 +164,8 @@
     /* ボタンスタイル */
     .form-button {
       display: inline-block;
-      padding: 12px 24px; /* ボタンの大きさ */
-      background-color: #4CAF50; /* ボタンの色 */
+      padding: 12px 24px;
+      background-color: #4CAF50;
       color: white;
       border: none;
       border-radius: 4px;
@@ -148,12 +183,18 @@
       }
       
       .image-card img {
-        width: 100%; /* スマホでは画像を幅いっぱいに */
+        width: 100%;
         height: auto;
       }
       
       .card {
-        padding: 15px; /* スマホでは余白を少し減らす */
+        padding: 15px;
+      }
+      
+      .shift-table th, 
+      .shift-table td {
+        padding: 8px;
+        font-size: 14px;
       }
     }
   </style>
@@ -185,7 +226,7 @@
 
   <section class="start" id="start">
     <h1>バイト求人</h1>
-    <div class="card text-card">
+    <div class="card">
       <p>ご覧いただき、ありがとうございます。</p>
       <p>こちらのサイトは○○のアルバイト応募者様向けのページとなっております。</p>
     </div>
@@ -194,7 +235,7 @@
   <section class="shift" id="shift">
     <h2>シフト</h2>
     
-    <div class="card text-card">
+    <div class="card">
       <h3>勤務時間</h3>
       <table class="shift-table">
         <thead>
@@ -202,23 +243,25 @@
             <th>時間帯</th>
             <th>開始時間</th>
             <th>終了時間</th>
+            <th>勤務時間</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>朝</td>
-            <td>9:00〜</td>
-            <td>12:00〜</td>
+            <td>9:00</td>
+            <td>12:00</td>
+            <td>3時間</td>
           </tr>
           <tr>
             <td>夜</td>
-            <td>17:30〜18:00</td>
-            <td>22:00〜22:30</td>
+            <td>17:30</td>
+            <td>22:00</td>
+            <td>4.5時間</td>
           </tr>
         </tbody>
       </table>
-      <p>基本的には上記の勤務時間となりますが、途中からの勤務や途中退勤も可能です。</p>
-      <p>(例）5/11 夜は18:00〜 のようにLINEで伝えていただければ大丈夫です。</p>
+      <p>※ 途中からの勤務や途中退勤も可能です</p>
     </div>
     
     <div class="card image-card">
@@ -286,46 +329,6 @@
           <li>食器洗浄機の操作を習得</li>
           <li>割れ物の扱いに注意</li>
           <li>効率的な配置を学習</li>
-          <li>洗浄後の点検も実施</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="card image-card">
-      <img src="pictures/食器片付け.jpg" alt="食器の片付け">
-      <div class="image-card-content">
-        <h3>【朝・夜 共通】食器片付け</h3>
-        <p>洗った食器を所定の位置に戻します。</p>
-        <ul>
-          <li>種類ごとに決められた場所へ</li>
-          <li>破損がないか最終確認</li>
-          <li>次の使用時に取り出しやすい配置</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="card image-card">
-      <img src="pictures/会場図面.jpg" alt="会場設営図面">
-      <div class="image-card-content">
-        <h3>【朝・夜 共通】会場設営 - 準備</h3>
-        <p>図面通りに机や椅子、演台などを配置します。</p>
-        <ul>
-          <li>設営図面の読み方を習得</li>
-          <li>効率的な動線を考慮</li>
-          <li>必要な物品の確認</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="card image-card">
-      <img src="pictures/会場.jpg" alt="会場設営作業">
-      <div class="image-card-content">
-        <h3>【朝・夜 共通】会場設営 - 実施</h3>
-        <p>実際に会場を設営します。</p>
-        <ul>
-          <li>チームで協力して作業</li>
-          <li>安全に注意して作業</li>
-          <li>最終チェックを実施</li>
         </ul>
       </div>
     </div>
@@ -334,7 +337,7 @@
   <section class="salary" id="salary">
     <h2>給料</h2>
     
-    <div class="card text-card">
+    <div class="card">
       <h3>時給について</h3>
       <ul>
         <li>基本時給: 1,050円</li>
@@ -361,73 +364,50 @@
   <section class="atmosphere" id="atmosphere">
     <h2>雰囲気</h2>
     
-    <div class="card qa-card">
+    <div class="card">
       <div class="question">Q. どんな人が働いていますか？</div>
       <div class="answer">A. 大学生から主婦・シニアまで幅広い年齢層の方が働いています。チームワークを大切にしています。</div>
     </div>
     
-    <div class="card qa-card">
+    <div class="card">
       <div class="question">Q. 1日に何人くらい働いていますか？</div>
       <div class="answer">A. 朝は5-8名、夜は10-15名程度です。繁忙期はもう少し多くなります。</div>
-    </div>
-    
-    <div class="card qa-card">
-      <div class="question">Q. シフトの頻度はどのくらいですか？</div>
-      <div class="answer">A. 週1回からOKです。平均は週2-3回の方が多いです。</div>
-    </div>
-    
-    <div class="card qa-card">
-      <div class="question">Q. 服装に決まりはありますか？</div>
-      <div class="answer">A. 動きやすい服装でOKです。エプロンと帽子は支給します。</div>
     </div>
   </section>
 
   <section class="form" id="form"> 
     <h2>応募フォーム</h2>
     
-    <!-- ボタン専用カード（中央配置） -->
-    <div class="card button-card">
+    <div class="card" style="text-align: center;">
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSd11-sAh7V1OJ_15l2_tCHFjh-cCd67yH134GS6yGLmKIdq0A/viewform?usp=sf_link" 
          class="form-button" 
          target="_blank">
         応募フォームを開く
       </a>
-      <p>上記ボタンから面接フォームにアクセスできます</p>
     </div>
     
-    <!-- 当日の流れカード -->
-    <div class="card text-card">
-      <h3>面接当日の流れ</h3>
-      <ol>
-        <li>受付で面接に来た旨をお伝えください</li>
-        <li>応募用紙に必要事項をご記入いただきます</li>
-        <li>簡単な説明（10分程度）</li>
-        <li>個別面接（15-20分程度）</li>
-        <li>勤務可能日の確認</li>
-        <li>終了後1週間以内に結果をご連絡します</li>
-      </ol>
-      <p>※ 全体で約30-40分程度のお時間を予定しています</p>
-    </div>
-    
-    <!-- 応募にあたっての注意事項カード -->
-    <div class="card text-card">
+    <div class="card">
       <h3>応募にあたって</h3>
       <p>面接時に以下のものをご持参ください:</p>
       <ul>
         <li>身分証明書（運転免許証や保険証など）</li>
         <li>印鑑（認印で可）</li>
         <li>履歴書（写真貼付）</li>
-        <li>通勤に必要な時間の確認</li>
       </ul>
-      <p>面接は平日の10:00-17:00で実施しています。</p>
     </div>
   </section>
 
   <section class="access" id="access">
     <h2>アクセス</h2>
     
-    <div class="map-container">
-      <p>Googleマップ: <a href="https://goo.gl/maps/..." target="_blank">○○施設までの地図</a></p>
+    <!-- Googleマップ専用カード -->
+    <div class="card map-card">
+      <h3>○○施設</h3>
+      <p>〒123-4567 東京都新宿区○○1-2-3</p>
+      <p>TEL: 03-1234-5678</p>
+      <a href="https://goo.gl/maps/..." class="map-link" target="_blank">
+        Googleマップで確認する
+      </a>
     </div>
     
     <div class="card image-card">
