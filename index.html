@@ -80,7 +80,10 @@
       padding: 20px;
     }
 
-    section.start { background-color: #f9f9f9; }
+    /* startセクションの色変更 */
+    section.start { 
+      background-color: #e8f4f8; /* 爽やかで真面目な水色 */
+    }
     section.shift { background-color: #fff8e1; }
     section.job { background-color: #e6f0ff; }
     section.salary { background-color: #ffffe0; }
@@ -91,6 +94,7 @@
     h2 {
       margin-top: 0;
       color: #2c3e50;
+      text-align: center; /* セクションタイトルは中央揃え */
     }
 
     /* 共通カードスタイル */
@@ -101,7 +105,15 @@
       padding: 20px;
       margin-bottom: 20px;
       word-break: break-word;
-      overflow: hidden; /* はみ出し防止 */
+      overflow: hidden;
+    }
+
+    /* テキストのみのカード（中央揃え） */
+    .text-card {
+      text-align: center;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     /* シフト表スタイル */
@@ -124,40 +136,50 @@
     /* Q&Aスタイル */
     .qa-card {
       border-left: 4px solid #4CAF50;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .question {
       font-weight: bold;
       color: #2c3e50;
       margin-bottom: 5px;
+      text-align: center;
     }
 
     .answer {
       margin-left: 15px;
+      text-align: center;
     }
 
-    /* 画像付きカード - PC用 */
+    /* 画像付きカード - 写真左・テキスト右に統一 */
     .image-card {
       display: flex;
-      align-items: center; /* 中央揃えに変更 */
+      align-items: center;
       gap: 20px;
     }
 
     .image-card img {
-      width: 250px; /* 画像サイズを大きく調整 */
-      height: 180px; /* 高さを固定 */
+      width: 250px;
+      height: 180px;
       border-radius: 5px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
       object-fit: cover;
-      flex-shrink: 0; /* 画像が縮小しないように */
+      flex-shrink: 0;
     }
 
     .image-card-content {
       flex: 1;
-      min-width: 0; /* テキストのはみ出し防止 */
+      min-width: 0;
     }
 
-    /* ボタンスタイル */
+    /* ボタンスタイル（中央揃え） */
+    .form-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+
     .form-button {
       display: inline-block;
       padding: 12px 24px;
@@ -219,19 +241,20 @@
       }
       
       .card {
-        padding: 15px; /* スマホではパディングを少し減らす */
+        padding: 15px;
       }
       
       h1 {
         font-size: clamp(20px, 5vw, 36px);
+        text-align: center;
       }
       
-      /* スマホでのテキストサイズ調整 */
       .image-card-content h3,
       .image-card-content p,
       .image-card-content ul {
         font-size: 0.9em;
         line-height: 1.4;
+        text-align: left; /* スマホでは左揃え */
       }
       
       .image-card-content ul {
@@ -241,6 +264,14 @@
       
       .image-card-content li {
         margin-bottom: 5px;
+      }
+      
+      /* スマホではテキストカードも左揃え */
+      .text-card,
+      .qa-card,
+      .question,
+      .answer {
+        text-align: left;
       }
     }
   </style>
@@ -272,7 +303,7 @@
 
   <section class="start" id="start">
     <h1>バイト求人</h1>
-    <div class="card">
+    <div class="card text-card">
       <p>ご覧いただき、ありがとうございます。</p>
       <p>こちらのサイトは○○のアルバイト応募者様向けのページとなっております。</p>
     </div>
@@ -281,7 +312,7 @@
   <section class="shift" id="shift">
     <h2>シフト</h2>
     
-    <div class="card">
+    <div class="card text-card">
       <h3>勤務時間</h3>
       <table class="shift-table">
         <thead>
@@ -339,8 +370,8 @@
       </div>
     </div>
 
-    <!-- 布団敷きの作業 -->
-    <div class="card image-card" style="flex-direction: row-reverse;">
+    <!-- 布団敷きの作業（row-reverseを削除） -->
+    <div class="card image-card">
       <img src="pictures/布団敷き.jpg" alt="布団敷き作業">
       <div class="image-card-content">
         <h3>【夜】布団敷き</h3>
@@ -357,9 +388,9 @@
   <section class="salary" id="salary">
     <h2>給料</h2>
     
-    <div class="card">
+    <div class="card text-card">
       <h3>時給について</h3>
-      <ul>
+      <ul style="display: inline-block; text-align: left;">
         <li>基本時給: 1,050円</li>
         <li>深夜勤務(22時以降): +25%</li>
         <li>資格手当: あり（要相談）</li>
@@ -408,18 +439,20 @@
   <section class="form" id="form"> 
     <h2>応募フォーム</h2>
     
-    <div style="text-align: center;">
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSd11-sAh7V1OJ_15l2_tCHFjh-cCd67yH134GS6yGLmKIdq0A/viewform?usp=sf_link" 
-         class="form-button" 
-         target="_blank">
-        面接フォームを開く
-      </a>
-    </div>
-    
-    <div class="card">
+    <div class="card text-card">
+      <div class="form-container">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd11-sAh7V1OJ_15l2_tCHFjh-cCd67yH134GS6yGLmKIdq0A/viewform?usp=sf_link" 
+           class="form-button" 
+           target="_blank">
+          面接フォームを開く
+        </a>
+        <p>以下のボタンから面接フォームにアクセスできます</p>
+        <p>応募にあたっての質問などはお気軽にお問い合わせください</p>
+      </div>
+      
       <h3>応募にあたって</h3>
       <p>面接時に以下のものをご持参ください:</p>
-      <ul>
+      <ul style="display: inline-block; text-align: left;">
         <li>身分証明書（運転免許証や保険証など）</li>
         <li>印鑑（認印で可）</li>
         <li>履歴書（写真貼付）</li>
@@ -436,7 +469,7 @@
       <p>Googleマップ: <a href="https://goo.gl/maps/..." target="_blank">○○施設までの地図</a></p>
     </div>
     
-    <div class="card image-card" style="flex-direction: row-reverse;">
+    <div class="card image-card">
       <img src="pictures/自転車駐車場.jpg" alt="自転車駐輪場">
       <div class="image-card-content">
         <h3>自転車でお越しの方</h3>
@@ -449,7 +482,7 @@
       </div>
     </div>
     
-    <div class="card image-card" style="flex-direction: row-reverse;">
+    <div class="card image-card">
       <img src="pictures/車駐車場.jpg" alt="車用駐車場">
       <div class="image-card-content">
         <h3>車でお越しの方</h3>
@@ -477,7 +510,6 @@
       });
     });
 
-    // 初期表示でバナーを左端にスクロール
     window.addEventListener('load', () => {
       const banner = document.querySelector('.banner');
       if (banner) {
