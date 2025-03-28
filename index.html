@@ -23,16 +23,16 @@
       z-index: 1000;
       border-radius: 8px;
       overflow: hidden;
-      max-width: 1200px; /* 最大幅を拡大 */
-      margin: 0 auto; /* 中央揃え */
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .banner {
       width: 100%;
-      overflow-x: hidden; /* スクロールバー非表示 */
+      overflow-x: hidden;
       white-space: nowrap;
       display: flex;
-      justify-content: space-around; /* タブを均等配置 */
+      justify-content: space-around;
       padding: 10px 0;
     }
 
@@ -42,24 +42,24 @@
       gap: 15px;
       padding: 0 20px;
       width: 100%;
-      justify-content: space-between; /* タブを均等配置 */
+      justify-content: space-between;
     }
 
     .tab {
-      flex: 1; /* 均等な幅に */
-      min-width: 80px; /* 最小幅設定 */
-      max-width: 120px; /* 最大幅設定 */
+      flex: 1;
+      min-width: 80px;
+      max-width: 120px;
       text-align: center;
       background-color: #F08080;
       border: 3px solid #333;
-      padding: 8px 5px; /* パディング調整 */
+      padding: 8px 5px;
       border-radius: 5px;
       text-decoration: none;
       color: white;
       font-weight: bold;
       white-space: nowrap;
       transition: transform 0.2s, background-color 0.2s;
-      word-break: keep-all; /* 単語を改行しない */
+      word-break: keep-all;
     }
 
     .tab:hover {
@@ -98,9 +98,10 @@
       background-color: white;
       border-radius: 8px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      padding: 15px;
+      padding: 20px;
       margin-bottom: 20px;
-      word-break: break-word; /* テキストがはみ出さないように */
+      word-break: break-word;
+      overflow: hidden; /* はみ出し防止 */
     }
 
     /* シフト表スタイル */
@@ -135,22 +136,25 @@
       margin-left: 15px;
     }
 
-    /* 画像付きカード */
+    /* 画像付きカード - PC用 */
     .image-card {
       display: flex;
-      align-items: flex-start;
-      gap: 20px; /* PC時の間隔 */
+      align-items: center; /* 中央揃えに変更 */
+      gap: 20px;
     }
 
     .image-card img {
-      width: 180px; /* 画像サイズ調整 */
+      width: 250px; /* 画像サイズを大きく調整 */
+      height: 180px; /* 高さを固定 */
       border-radius: 5px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
       object-fit: cover;
+      flex-shrink: 0; /* 画像が縮小しないように */
     }
 
     .image-card-content {
       flex: 1;
+      min-width: 0; /* テキストのはみ出し防止 */
     }
 
     /* ボタンスタイル */
@@ -188,7 +192,7 @@
     @media screen and (max-width: 768px) {
       .banner {
         justify-content: flex-start;
-        overflow-x: auto; /* 横スクロール可能に */
+        overflow-x: auto;
         -webkit-overflow-scrolling: touch;
       }
       
@@ -210,10 +214,33 @@
       
       .image-card img {
         width: 100%;
+        height: auto;
+        max-height: 200px;
+      }
+      
+      .card {
+        padding: 15px; /* スマホではパディングを少し減らす */
       }
       
       h1 {
         font-size: clamp(20px, 5vw, 36px);
+      }
+      
+      /* スマホでのテキストサイズ調整 */
+      .image-card-content h3,
+      .image-card-content p,
+      .image-card-content ul {
+        font-size: 0.9em;
+        line-height: 1.4;
+      }
+      
+      .image-card-content ul {
+        padding-left: 20px;
+        margin: 10px 0;
+      }
+      
+      .image-card-content li {
+        margin-bottom: 5px;
       }
     }
   </style>
@@ -242,7 +269,7 @@
       </div>
     </div>
   </div>
-  
+
   <section class="start" id="start">
     <h1>バイト求人</h1>
     <div class="card">
@@ -325,8 +352,6 @@
         </ul>
       </div>
     </div>
-    
-    <!-- 他の仕事内容カードも同様に追加 -->
   </section>
 
   <section class="salary" id="salary">
