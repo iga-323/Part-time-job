@@ -5,14 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>バイト情報ページ</title>
   <style>
+    /* 基本設定 */
     body {
-      background-color: #B0E0E6;
+      background-color: #B0E0E6; /* ページ背景色 */
       margin: 0;
       font-family: sans-serif;
       scroll-behavior: smooth;
-      padding-top: 70px;
+      padding-top: 70px; /* ヘッダーの高さ分余白 */
     }
 
+    /* ヘッダーバナー */
     .banner-wrapper {
       position: fixed;
       top: 0;
@@ -23,7 +25,7 @@
       z-index: 1000;
       border-radius: 8px;
       overflow: hidden;
-      max-width: 1200px;
+      max-width: 1200px; /* バナーの最大幅 */
       margin: 0 auto;
     }
 
@@ -47,8 +49,8 @@
 
     .tab {
       flex: 1;
-      min-width: 80px;
-      max-width: 120px;
+      min-width: 80px; /* タブの最小幅 */
+      max-width: 120px; /* タブの最大幅 */
       text-align: center;
       background-color: #F08080;
       border: 3px solid #333;
@@ -62,28 +64,15 @@
       word-break: keep-all;
     }
 
-    .tab:hover {
-      transform: scale(1.05);
-      background-color: #f0f0f0;
-      color: #333;
-    }
-
-    .tab.active {
-      background-color: #ffa500;
-      color: #fff;
-    }
-
+    /* セクションスタイル */
     section {
       scroll-margin-top: 70px;
-      max-width: 1000px;
+      max-width: 1000px; /* コンテンツの最大幅 */
       margin: 0 auto;
       padding: 20px;
     }
 
-    /* startセクションの色変更 */
-    section.start { 
-      background-color: #e8f4f8;
-    }
+    section.start { background-color: #e8f4f8; }
     section.shift { background-color: #fff8e1; }
     section.job { background-color: #e6f0ff; }
     section.salary { background-color: #ffffe0; }
@@ -91,77 +80,44 @@
     section.form { background-color: #e8f5e9; }
     section.access { background-color: #ffe4e1; }
 
-    h2 {
-      margin-top: 0;
-      color: #2c3e50;
-      text-align: left; /* 左揃えに変更 */
-    }
-
-    /* 共通カードスタイル */
+    /* カード基本スタイル */
     .card {
       background-color: white;
-      border-radius: 8px;
+      border-radius: 8px; /* 角の丸み */
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      padding: 20px;
-      margin-bottom: 20px;
+      padding: 20px; /* 内側の余白 */
+      margin-bottom: 20px; /* カード間の間隔 */
       word-break: break-word;
       overflow: hidden;
-      text-align: left; /* すべて左揃えに */
+      text-align: left;
+      max-width: 100%;
     }
 
-    /* テキストカード */
+    /* テキストカード（中央配置用） */
     .text-card {
-      max-width: 100%;
+      text-align: left;
     }
 
-    /* シフト表スタイル */
-    .shift-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 15px 0;
-    }
-
-    .shift-table th, .shift-table td {
-      border: 1px solid #ddd;
-      padding: 8px;
+    /* ボタン専用カード */
+    .button-card {
       text-align: center;
+      padding: 30px 20px; /* ボタン周りの余白 */
+      background-color: #f8f9fa; /* 薄い背景色 */
     }
 
-    .shift-table th {
-      background-color: #f2f2f2;
-    }
-
-    /* Q&Aスタイル */
-    .qa-card {
-      border-left: 4px solid #4CAF50;
-      max-width: 100%;
-    }
-
-    .question {
-      font-weight: bold;
-      color: #2c3e50;
-      margin-bottom: 5px;
-      text-align: left;
-    }
-
-    .answer {
-      margin-left: 0;
-      text-align: left;
-    }
-
-    /* 画像付きカード - 統一スタイル */
+    /* 画像付きカード */
     .image-card {
       display: flex;
-      align-items: flex-start; /* 上揃えに変更 */
-      gap: 20px;
+      align-items: flex-start;
+      gap: 20px; /* 画像とテキストの間隔 */
     }
 
     .image-card img {
-      width: 250px;
-      height: 180px;
+      width: 250px; /* 画像の幅 */
+      height: 180px; /* 画像の高さ */
       border-radius: 5px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-      object-fit: cover;
+      object-fit: cover; /* 画像のトリミング方法 */
       flex-shrink: 0;
     }
 
@@ -171,15 +127,10 @@
     }
 
     /* ボタンスタイル */
-    .form-container {
-      margin: 20px 0;
-      text-align: left;
-    }
-
     .form-button {
       display: inline-block;
-      padding: 12px 24px;
-      background-color: #4CAF50;
+      padding: 12px 24px; /* ボタンの大きさ */
+      background-color: #4CAF50; /* ボタンの色 */
       color: white;
       border: none;
       border-radius: 4px;
@@ -190,59 +141,19 @@
       margin: 10px 0;
     }
 
-    .form-button:hover {
-      background-color: #45a049;
-    }
-
-    /* マップコンテナ */
-    .map-container {
-      height: 300px;
-      background-color: #eee;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-    }
-
     /* スマホ表示時の調整 */
     @media screen and (max-width: 768px) {
-      .banner {
-        justify-content: flex-start;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-      }
-      
-      .banner-inner {
-        min-width: max-content;
-        justify-content: flex-start;
-        padding: 0 15px;
-      }
-      
-      .tab {
-        flex: 0 0 auto;
-        padding: 8px 12px;
-      }
-      
       .image-card {
         flex-direction: column;
-        gap: 15px;
       }
       
       .image-card img {
-        width: 100%;
+        width: 100%; /* スマホでは画像を幅いっぱいに */
         height: auto;
-        max-height: 200px;
       }
       
       .card {
-        padding: 15px;
-      }
-      
-      h1 {
-        font-size: clamp(20px, 5vw, 36px);
-        text-align: left;
+        padding: 15px; /* スマホでは余白を少し減らす */
       }
     }
   </style>
@@ -327,7 +238,6 @@
   <section class="job" id="job">
     <h2>仕事内容</h2>
     
-    <!-- 布団上げの作業 -->
     <div class="card image-card">
       <img src="pictures/シーツ回収.jpg" alt="シーツの回収作業">
       <div class="image-card-content">
@@ -341,7 +251,6 @@
       </div>
     </div>
 
-    <!-- 布団上げの作業2 -->
     <div class="card image-card">
       <img src="pictures/布団上げ.jpg" alt="布団をタンスに収納">
       <div class="image-card-content">
@@ -355,7 +264,6 @@
       </div>
     </div>
 
-    <!-- 布団敷きの作業 -->
     <div class="card image-card">
       <img src="pictures/布団敷き.jpg" alt="布団敷き作業">
       <div class="image-card-content">
@@ -369,7 +277,6 @@
       </div>
     </div>
 
-    <!-- 食器洗いの作業 -->
     <div class="card image-card">
       <img src="pictures/食洗機.jpg" alt="食器洗浄機の操作">
       <div class="image-card-content">
@@ -384,7 +291,6 @@
       </div>
     </div>
 
-    <!-- 食器片付けの作業 -->
     <div class="card image-card">
       <img src="pictures/食器片付け.jpg" alt="食器の片付け">
       <div class="image-card-content">
@@ -398,7 +304,6 @@
       </div>
     </div>
 
-    <!-- 会場設営の作業 -->
     <div class="card image-card">
       <img src="pictures/会場図面.jpg" alt="会場設営図面">
       <div class="image-card-content">
@@ -412,7 +317,6 @@
       </div>
     </div>
 
-    <!-- 会場設営の作業2 -->
     <div class="card image-card">
       <img src="pictures/会場.jpg" alt="会場設営作業">
       <div class="image-card-content">
@@ -481,17 +385,32 @@
   <section class="form" id="form"> 
     <h2>応募フォーム</h2>
     
+    <!-- ボタン専用カード（中央配置） -->
+    <div class="card button-card">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSd11-sAh7V1OJ_15l2_tCHFjh-cCd67yH134GS6yGLmKIdq0A/viewform?usp=sf_link" 
+         class="form-button" 
+         target="_blank">
+        応募フォームを開く
+      </a>
+      <p>上記ボタンから面接フォームにアクセスできます</p>
+    </div>
+    
+    <!-- 当日の流れカード -->
     <div class="card text-card">
-      <div class="form-container">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd11-sAh7V1OJ_15l2_tCHFjh-cCd67yH134GS6yGLmKIdq0A/viewform?usp=sf_link" 
-           class="form-button" 
-           target="_blank">
-          面接フォームを開く
-        </a>
-        <p>以下のボタンから面接フォームにアクセスできます</p>
-        <p>応募にあたっての質問などはお気軽にお問い合わせください</p>
-      </div>
-      
+      <h3>面接当日の流れ</h3>
+      <ol>
+        <li>受付で面接に来た旨をお伝えください</li>
+        <li>応募用紙に必要事項をご記入いただきます</li>
+        <li>簡単な説明（10分程度）</li>
+        <li>個別面接（15-20分程度）</li>
+        <li>勤務可能日の確認</li>
+        <li>終了後1週間以内に結果をご連絡します</li>
+      </ol>
+      <p>※ 全体で約30-40分程度のお時間を予定しています</p>
+    </div>
+    
+    <!-- 応募にあたっての注意事項カード -->
+    <div class="card text-card">
       <h3>応募にあたって</h3>
       <p>面接時に以下のものをご持参ください:</p>
       <ul>
@@ -500,7 +419,7 @@
         <li>履歴書（写真貼付）</li>
         <li>通勤に必要な時間の確認</li>
       </ul>
-      <p>面接は平日の10:00-17:00で実施しています。所要時間は約30分です。</p>
+      <p>面接は平日の10:00-17:00で実施しています。</p>
     </div>
   </section>
 
