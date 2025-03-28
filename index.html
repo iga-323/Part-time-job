@@ -11,22 +11,21 @@
       font-family: sans-serif;
       scroll-behavior: smooth;
       padding-top: 70px;
-    }
+      }
 
-    .banner-wrapper {
+      .banner-wrapper {
       position: fixed;
       top: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 1050px;
+      width: 100%; /* 変更: 1050px → 100% */
+      max-width: 1050px; /* 追加 */
       background-color: #fdf5e6;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       z-index: 1000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       border-radius: 8px;
-    }
+      overflow: hidden; /* 追加 */
+      }
 
     .banner {
       width: 100%;
@@ -34,15 +33,27 @@
       -webkit-overflow-scrolling: touch;
       white-space: nowrap;
       display: flex;
-      justify-content: flex-start;
+      justify-content: center; /* 変更: flex-start → center */
+      padding: 10px 0; /* 変更: 上下のパディングのみ */
+  }
+
+  .banner-inner {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    padding: 0 10px; /* 変更: 上下のパディング削除 */
+    min-width: auto; /* 変更: max-content → auto */
     }
 
-    .banner-inner {
-      display: flex;
-      flex-wrap: nowrap;
-      gap: 20px;
-      padding: 10px;
-      min-width: max-content;
+    /* スマホ表示時の調整 */
+    @media screen and (max-width: 768px) {
+      .banner {
+        justify-content: flex-start; /* スマホ時は左寄せ */
+      }
+  
+      .banner-inner {
+        min-width: max-content; /* スマホ時はスクロール可能に */
+      }
     }
 
     .tab {
@@ -204,6 +215,18 @@
   </style>
 </head>
 <body>
+  <script>
+  window.addEventListener('load', function() {
+    // ページ読み込み時にトップセクションにスクロール
+    document.querySelector('#start').scrollIntoView();
+    
+    // バナーのスクロール位置調整（後述のCSS変更と連動）
+    const banner = document.querySelector('.banner');
+    if (banner) {
+      banner.scrollLeft = 0;
+    }
+  });
+</script>
 
   <div class="banner-wrapper">
     <div class="banner" id="banner">
@@ -258,7 +281,7 @@
     </div>
     
     <div class="card image-card">
-      <img src="images/shift_submit.jpg" alt="シフト提出の様子">
+      <img src="pictures/shift_submit.jpg" alt="シフト提出の様子">
       <div class="image-card-content">
         <h3>シフト提出方法</h3>
         <p>シフトの提出は月末に来月のシフトをLINEで提出していただきます。</p>
@@ -290,7 +313,7 @@
 
     <!-- 布団敷きの作業 -->
     <div class="card image-card" style="flex-direction: row-reverse;">
-      <img src="images/布団敷き.jpg" alt="布団敷き作業">
+      <img src="pictures/布団敷き.jpg" alt="布団敷き作業">
       <div class="image-card-content">
         <h3>【夜】布団敷き</h3>
         <p>3人1組で各部屋の布団を敷きます。</p>
@@ -319,7 +342,7 @@
     </div>
     
     <div class="card image-card">
-      <img src="images/賄い.jpg" alt="賄い食事の様子">
+      <img src="pictures/賄い.jpg" alt="賄い食事の様子">
       <div class="image-card-content">
         <h3>まかない食事</h3>
         <p>夜勤時には栄養バランスの取れた夕食を支給します。</p>
@@ -388,7 +411,7 @@
     </div>
     
     <div class="card image-card" style="flex-direction: row-reverse;">
-      <img src="images/自転車駐車場.jpg" alt="自転車駐輪場">
+      <img src="pictures/自転車駐車場.jpg" alt="自転車駐輪場">
       <div class="image-card-content">
         <h3>自転車でお越しの方</h3>
         <p>専用の駐輪場をご利用いただけます。</p>
@@ -401,7 +424,7 @@
     </div>
     
     <div class="card image-card" style="flex-direction: row-reverse;">
-      <img src="images/車駐車場.jpg" alt="車用駐車場">
+      <img src="pictures/車駐車場.jpg" alt="車用駐車場">
       <div class="image-card-content">
         <h3>車でお越しの方</h3>
         <p>従業員専用駐車場が利用できます。</p>
