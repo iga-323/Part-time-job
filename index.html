@@ -11,67 +11,59 @@
       font-family: sans-serif;
       scroll-behavior: smooth;
       padding-top: 70px;
-      }
+    }
 
-      .banner-wrapper {
+    .banner-wrapper {
       position: fixed;
       top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100%; /* 変更: 1050px → 100% */
-      max-width: 1050px; /* 追加 */
+      left: 0;
+      right: 0;
       background-color: #fdf5e6;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       z-index: 1000;
       border-radius: 8px;
-      overflow: hidden; /* 追加 */
-      }
+      overflow: hidden;
+      max-width: 1200px; /* 最大幅を拡大 */
+      margin: 0 auto; /* 中央揃え */
+    }
 
     .banner {
       width: 100%;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
+      overflow-x: hidden; /* スクロールバー非表示 */
       white-space: nowrap;
       display: flex;
-      justify-content: center; /* 変更: flex-start → center */
-      padding: 10px 0; /* 変更: 上下のパディングのみ */
-  }
-
-  .banner-inner {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 20px;
-    padding: 0 10px; /* 変更: 上下のパディング削除 */
-    min-width: auto; /* 変更: max-content → auto */
+      justify-content: space-around; /* タブを均等配置 */
+      padding: 10px 0;
     }
 
-    /* スマホ表示時の調整 */
-    @media screen and (max-width: 768px) {
-      .banner {
-        justify-content: flex-start; /* スマホ時は左寄せ */
-      }
-  
-      .banner-inner {
-        min-width: max-content; /* スマホ時はスクロール可能に */
-      }
+    .banner-inner {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 15px;
+      padding: 0 20px;
+      width: 100%;
+      justify-content: space-between; /* タブを均等配置 */
     }
 
     .tab {
-      flex: 0 0 100px;
+      flex: 1; /* 均等な幅に */
+      min-width: 80px; /* 最小幅設定 */
+      max-width: 120px; /* 最大幅設定 */
       text-align: center;
       background-color: #F08080;
       border: 3px solid #333;
-      padding: 8px 14px;
+      padding: 8px 5px; /* パディング調整 */
       border-radius: 5px;
       text-decoration: none;
       color: white;
       font-weight: bold;
       white-space: nowrap;
       transition: transform 0.2s, background-color 0.2s;
+      word-break: keep-all; /* 単語を改行しない */
     }
 
     .tab:hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
       background-color: #f0f0f0;
       color: #333;
     }
@@ -106,8 +98,9 @@
       background-color: white;
       border-radius: 8px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      padding: 20px;
+      padding: 15px;
       margin-bottom: 20px;
+      word-break: break-word; /* テキストがはみ出さないように */
     }
 
     /* シフト表スタイル */
@@ -119,7 +112,7 @@
 
     .shift-table th, .shift-table td {
       border: 1px solid #ddd;
-      padding: 10px;
+      padding: 8px;
       text-align: center;
     }
 
@@ -146,13 +139,14 @@
     .image-card {
       display: flex;
       align-items: flex-start;
-      gap: 20px;
+      gap: 20px; /* PC時の間隔 */
     }
 
     .image-card img {
-      width: 200px;
+      width: 180px; /* 画像サイズ調整 */
       border-radius: 5px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      object-fit: cover;
     }
 
     .image-card-content {
@@ -190,43 +184,50 @@
       font-weight: bold;
     }
 
-    @media screen and (max-width: 1000px) {
-      .banner-wrapper {
-        width: 100%;
-      }
-      .banner-inner {
-        width: max-content;
-        justify-content: flex-start;
-      }
-      h1 {
-        font-size: clamp(20px, 5vw, 36px);
-      }
-    }
-
+    /* スマホ表示時の調整 */
     @media screen and (max-width: 768px) {
+      .banner {
+        justify-content: flex-start;
+        overflow-x: auto; /* 横スクロール可能に */
+        -webkit-overflow-scrolling: touch;
+      }
+      
+      .banner-inner {
+        min-width: max-content;
+        justify-content: flex-start;
+        padding: 0 15px;
+      }
+      
+      .tab {
+        flex: 0 0 auto;
+        padding: 8px 12px;
+      }
+      
       .image-card {
         flex-direction: column;
+        gap: 15px;
       }
       
       .image-card img {
         width: 100%;
+      }
+      
+      h1 {
+        font-size: clamp(20px, 5vw, 36px);
       }
     }
   </style>
 </head>
 <body>
   <script>
-  window.addEventListener('load', function() {
-    // ページ読み込み時にトップセクションにスクロール
-    document.querySelector('#start').scrollIntoView();
-    
-    // バナーのスクロール位置調整（後述のCSS変更と連動）
-    const banner = document.querySelector('.banner');
-    if (banner) {
-      banner.scrollLeft = 0;
-    }
-  });
-</script>
+    window.addEventListener('load', function() {
+      document.querySelector('#start').scrollIntoView();
+      const banner = document.querySelector('.banner');
+      if (banner) {
+        banner.scrollLeft = 0;
+      }
+    });
+  </script>
 
   <div class="banner-wrapper">
     <div class="banner" id="banner">
@@ -241,7 +242,7 @@
       </div>
     </div>
   </div>
-
+  
   <section class="start" id="start">
     <h1>バイト求人</h1>
     <div class="card">
