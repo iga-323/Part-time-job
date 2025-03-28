@@ -82,7 +82,7 @@
 
     /* startセクションの色変更 */
     section.start { 
-      background-color: #e8f4f8; /* 爽やかで真面目な水色 */
+      background-color: #e8f4f8;
     }
     section.shift { background-color: #fff8e1; }
     section.job { background-color: #e6f0ff; }
@@ -94,7 +94,7 @@
     h2 {
       margin-top: 0;
       color: #2c3e50;
-      text-align: center; /* セクションタイトルは中央揃え */
+      text-align: left; /* 左揃えに変更 */
     }
 
     /* 共通カードスタイル */
@@ -106,14 +106,12 @@
       margin-bottom: 20px;
       word-break: break-word;
       overflow: hidden;
+      text-align: left; /* すべて左揃えに */
     }
 
-    /* テキストのみのカード（中央揃え） */
+    /* テキストカード */
     .text-card {
-      text-align: center;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
+      max-width: 100%;
     }
 
     /* シフト表スタイル */
@@ -136,27 +134,25 @@
     /* Q&Aスタイル */
     .qa-card {
       border-left: 4px solid #4CAF50;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
+      max-width: 100%;
     }
 
     .question {
       font-weight: bold;
       color: #2c3e50;
       margin-bottom: 5px;
-      text-align: center;
+      text-align: left;
     }
 
     .answer {
-      margin-left: 15px;
-      text-align: center;
+      margin-left: 0;
+      text-align: left;
     }
 
-    /* 画像付きカード - 写真左・テキスト右に統一 */
+    /* 画像付きカード - 統一スタイル */
     .image-card {
       display: flex;
-      align-items: center;
+      align-items: flex-start; /* 上揃えに変更 */
       gap: 20px;
     }
 
@@ -174,10 +170,10 @@
       min-width: 0;
     }
 
-    /* ボタンスタイル（中央揃え） */
+    /* ボタンスタイル */
     .form-container {
-      text-align: center;
       margin: 20px 0;
+      text-align: left;
     }
 
     .form-button {
@@ -246,31 +242,6 @@
       
       h1 {
         font-size: clamp(20px, 5vw, 36px);
-        text-align: center;
-      }
-      
-      .image-card-content h3,
-      .image-card-content p,
-      .image-card-content ul {
-        font-size: 0.9em;
-        line-height: 1.4;
-        text-align: left; /* スマホでは左揃え */
-      }
-      
-      .image-card-content ul {
-        padding-left: 20px;
-        margin: 10px 0;
-      }
-      
-      .image-card-content li {
-        margin-bottom: 5px;
-      }
-      
-      /* スマホではテキストカードも左揃え */
-      .text-card,
-      .qa-card,
-      .question,
-      .answer {
         text-align: left;
       }
     }
@@ -370,7 +341,21 @@
       </div>
     </div>
 
-    <!-- 布団敷きの作業（row-reverseを削除） -->
+    <!-- 布団上げの作業2 -->
+    <div class="card image-card">
+      <img src="pictures/布団上げ.jpg" alt="布団をタンスに収納">
+      <div class="image-card-content">
+        <h3>【朝】布団上げ - 収納作業</h3>
+        <p>布団を決められた方法で折りたたみ、タンスに戻します。</p>
+        <ul>
+          <li>統一された折り方で収納</li>
+          <li>タンス内の配置も指定通りに</li>
+          <li>次の利用時に取り出しやすいように</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 布団敷きの作業 -->
     <div class="card image-card">
       <img src="pictures/布団敷き.jpg" alt="布団敷き作業">
       <div class="image-card-content">
@@ -383,6 +368,63 @@
         </ul>
       </div>
     </div>
+
+    <!-- 食器洗いの作業 -->
+    <div class="card image-card">
+      <img src="pictures/食洗機.jpg" alt="食器洗浄機の操作">
+      <div class="image-card-content">
+        <h3>【朝・夜 共通】食器洗い</h3>
+        <p>洗浄機で食器を洗い、所定の位置に戻します。</p>
+        <ul>
+          <li>食器洗浄機の操作を習得</li>
+          <li>割れ物の扱いに注意</li>
+          <li>効率的な配置を学習</li>
+          <li>洗浄後の点検も実施</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 食器片付けの作業 -->
+    <div class="card image-card">
+      <img src="pictures/食器片付け.jpg" alt="食器の片付け">
+      <div class="image-card-content">
+        <h3>【朝・夜 共通】食器片付け</h3>
+        <p>洗った食器を所定の位置に戻します。</p>
+        <ul>
+          <li>種類ごとに決められた場所へ</li>
+          <li>破損がないか最終確認</li>
+          <li>次の使用時に取り出しやすい配置</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 会場設営の作業 -->
+    <div class="card image-card">
+      <img src="pictures/会場図面.jpg" alt="会場設営図面">
+      <div class="image-card-content">
+        <h3>【朝・夜 共通】会場設営 - 準備</h3>
+        <p>図面通りに机や椅子、演台などを配置します。</p>
+        <ul>
+          <li>設営図面の読み方を習得</li>
+          <li>効率的な動線を考慮</li>
+          <li>必要な物品の確認</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 会場設営の作業2 -->
+    <div class="card image-card">
+      <img src="pictures/会場.jpg" alt="会場設営作業">
+      <div class="image-card-content">
+        <h3>【朝・夜 共通】会場設営 - 実施</h3>
+        <p>実際に会場を設営します。</p>
+        <ul>
+          <li>チームで協力して作業</li>
+          <li>安全に注意して作業</li>
+          <li>最終チェックを実施</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
   <section class="salary" id="salary">
@@ -390,7 +432,7 @@
     
     <div class="card text-card">
       <h3>時給について</h3>
-      <ul style="display: inline-block; text-align: left;">
+      <ul>
         <li>基本時給: 1,050円</li>
         <li>深夜勤務(22時以降): +25%</li>
         <li>資格手当: あり（要相談）</li>
@@ -452,7 +494,7 @@
       
       <h3>応募にあたって</h3>
       <p>面接時に以下のものをご持参ください:</p>
-      <ul style="display: inline-block; text-align: left;">
+      <ul>
         <li>身分証明書（運転免許証や保険証など）</li>
         <li>印鑑（認印で可）</li>
         <li>履歴書（写真貼付）</li>
