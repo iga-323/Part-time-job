@@ -7,11 +7,11 @@
   <style>
     /* 基本設定 */
     body {
-      background-color: #B0E0E6; /* 背景色 */
+      background-color: #B0E0E6;
       margin: 0;
       font-family: sans-serif;
       scroll-behavior: smooth;
-      padding-top: 70px; /* ヘッダー分の余白 */
+      padding-top: 70px;
     }
 
     /* ヘッダーバナー */
@@ -161,6 +161,21 @@
       min-width: 0;
     }
 
+    /* Q&Aスタイル */
+    .qa-card {
+      border-left: 4px solid #4CAF50;
+    }
+
+    .question {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 5px;
+    }
+
+    .answer {
+      margin-left: 15px;
+    }
+
     /* ボタンスタイル */
     .form-button {
       display: inline-block;
@@ -174,6 +189,10 @@
       transition: background-color 0.3s;
       text-decoration: none;
       margin: 10px 0;
+    }
+
+    .form-button:hover {
+      background-color: #45a049;
     }
 
     /* スマホ表示時の調整 */
@@ -329,6 +348,46 @@
           <li>食器洗浄機の操作を習得</li>
           <li>割れ物の扱いに注意</li>
           <li>効率的な配置を学習</li>
+          <li>洗浄後の点検も実施</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card image-card">
+      <img src="pictures/食器片付け.jpg" alt="食器の片付け">
+      <div class="image-card-content">
+        <h3>【朝・夜 共通】食器片付け</h3>
+        <p>洗った食器を所定の位置に戻します。</p>
+        <ul>
+          <li>種類ごとに決められた場所へ</li>
+          <li>破損がないか最終確認</li>
+          <li>次の使用時に取り出しやすい配置</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card image-card">
+      <img src="pictures/会場図面.jpg" alt="会場設営図面">
+      <div class="image-card-content">
+        <h3>【朝・夜 共通】会場設営 - 準備</h3>
+        <p>図面通りに机や椅子、演台などを配置します。</p>
+        <ul>
+          <li>設営図面の読み方を習得</li>
+          <li>効率的な動線を考慮</li>
+          <li>必要な物品の確認</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card image-card">
+      <img src="pictures/会場.jpg" alt="会場設営作業">
+      <div class="image-card-content">
+        <h3>【朝・夜 共通】会場設営 - 実施</h3>
+        <p>実際に会場を設営します。</p>
+        <ul>
+          <li>チームで協力して作業</li>
+          <li>安全に注意して作業</li>
+          <li>最終チェックを実施</li>
         </ul>
       </div>
     </div>
@@ -364,28 +423,54 @@
   <section class="atmosphere" id="atmosphere">
     <h2>雰囲気</h2>
     
-    <div class="card">
+    <div class="card qa-card">
       <div class="question">Q. どんな人が働いていますか？</div>
       <div class="answer">A. 大学生から主婦・シニアまで幅広い年齢層の方が働いています。チームワークを大切にしています。</div>
     </div>
     
-    <div class="card">
+    <div class="card qa-card">
       <div class="question">Q. 1日に何人くらい働いていますか？</div>
       <div class="answer">A. 朝は5-8名、夜は10-15名程度です。繁忙期はもう少し多くなります。</div>
+    </div>
+    
+    <div class="card qa-card">
+      <div class="question">Q. シフトの頻度はどのくらいですか？</div>
+      <div class="answer">A. 週1回からOKです。平均は週2-3回の方が多いです。</div>
+    </div>
+    
+    <div class="card qa-card">
+      <div class="question">Q. 服装に決まりはありますか？</div>
+      <div class="answer">A. 動きやすい服装でOKです。エプロンと帽子は支給します。</div>
     </div>
   </section>
 
   <section class="form" id="form"> 
     <h2>応募フォーム</h2>
     
+    <!-- ボタン専用カード（中央配置） -->
     <div class="card" style="text-align: center;">
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSd11-sAh7V1OJ_15l2_tCHFjh-cCd67yH134GS6yGLmKIdq0A/viewform?usp=sf_link" 
          class="form-button" 
          target="_blank">
         応募フォームを開く
       </a>
+      <p>上記ボタンから面接フォームにアクセスできます</p>
     </div>
     
+    <!-- 当日の流れカード -->
+    <div class="card">
+      <h3>面接当日の流れ</h3>
+      <ol>
+        <li>受付で面接に来た旨をお伝えください</li>
+        <li>応募用紙に必要事項をご記入いただきます</li>
+        <li>簡単な説明（10分程度）</li>
+        <li>個別面接（15-20分程度）</li>
+        <li>勤務可能日の確認</li>
+        <li>終了後1週間以内に結果をご連絡します</li>
+      </ol>
+    </div>
+    
+    <!-- 応募にあたっての注意事項カード -->
     <div class="card">
       <h3>応募にあたって</h3>
       <p>面接時に以下のものをご持参ください:</p>
@@ -393,7 +478,9 @@
         <li>身分証明書（運転免許証や保険証など）</li>
         <li>印鑑（認印で可）</li>
         <li>履歴書（写真貼付）</li>
+        <li>通勤に必要な時間の確認</li>
       </ul>
+      <p>面接は平日の10:00-17:00で実施しています。所要時間は約30分です。</p>
     </div>
   </section>
 
