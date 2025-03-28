@@ -70,9 +70,166 @@
       box-sizing: border-box;
     }
 
-    /* その他のスタイルは変更なし... */
 
-  </style>
+    /* セクションスタイル */
+    section {
+      scroll-margin-top: 70px;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    section.start { background-color: #e8f4f8; }
+    section.shift { background-color: #fff8e1; }
+    section.job { background-color: #e6f0ff; }
+    section.salary { background-color: #ffffe0; }
+    section.atmosphere { background-color: #ffe4c4; }
+    section.form { background-color: #e8f5e9; }
+    section.access { background-color: #ffe4e1; }
+
+    h2 {
+      margin-top: 0;
+      color: #2c3e50;
+      text-align: left;
+    }
+
+    /* カード基本スタイル */
+    .card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+      word-break: break-word;
+      overflow: hidden;
+      text-align: left;
+      max-width: 100%;
+    }
+
+    /* シフト表スタイル */
+    .shift-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+    }
+
+    .shift-table th, .shift-table td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .shift-table th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+
+    /* Googleマップカード */
+    .map-card {
+      text-align: center;
+      padding: 25px 20px;
+      background-color: #f8f9fa;
+    }
+
+    .map-link {
+      display: inline-block;
+      padding: 12px 20px;
+      background-color: #4285F4;
+      color: white;
+      border-radius: 4px;
+      text-decoration: none;
+      margin-top: 15px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .map-link:hover {
+      background-color: #3367d6;
+    }
+
+    /* 画像付きカード */
+    .image-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .image-card img {
+      width: 250px;
+      height: 180px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .image-card-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* Q&Aスタイル */
+    .qa-card {
+      border-left: 4px solid #4CAF50;
+    }
+
+    .question {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 5px;
+    }
+
+    .answer {
+      margin-left: 15px;
+    }
+
+    /* ボタンスタイル */
+    .form-button {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      text-decoration: none;
+      margin: 10px 0;
+    }
+
+    .form-button:hover {
+      background-color: #45a049;
+    }
+
+    /* スマホ表示時の調整 */
+    @media screen and (max-width: 768px) {
+      .image-card {
+        flex-direction: column;
+      }
+      
+      .image-card img {
+        width: 100%;
+        height: auto;
+      }
+      
+      .card {
+        padding: 15px;
+      }
+      
+      .shift-table th, 
+      .shift-table td {
+        padding: 8px;
+        font-size: 14px;
+      }
+      
+      .tab {
+        min-width: 70px;
+        padding: 8px 3px;
+        font-size: 14px;
+      }
+    }
+ </style>
 </head>
 <body>
   <script>
@@ -107,10 +264,7 @@
     </div>
   </div>
 
-
-</body>
-</html>
-
+ 
   <section class="start" id="start">
     <h1>バイト求人</h1>
     <div class="card">
