@@ -31,24 +31,26 @@
 
     .banner {
       width: 100%;
-      overflow-x: hidden;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch; /* iOSでスムーズスクロール */
       white-space: nowrap;
-      display: flex;
-      justify-content: space-around;
+      display: block;
       padding: 10px 0;
+      scrollbar-width: none; /* Firefoxでスクロールバー非表示 */
+    }
+
+    .banner::-webkit-scrollbar {
+      display: none; /* Chrome/Safariでスクロールバー非表示 */
     }
 
     .banner-inner {
-      display: flex;
-      flex-wrap: nowrap;
-      gap: 15px;
-      padding: 0 20px;
-      width: 100%;
-      justify-content: space-between;
+      display: inline-block;
+      padding: 0 10px;
+      white-space: nowrap;
     }
 
     .tab {
-      flex: 1;
+      display: inline-block;
       min-width: 80px;
       max-width: 120px;
       text-align: center;
@@ -62,6 +64,7 @@
       white-space: nowrap;
       transition: transform 0.2s, background-color 0.2s;
       word-break: keep-all;
+      margin: 0 5px;
     }
 
     /* セクションスタイル */
@@ -215,6 +218,12 @@
         padding: 8px;
         font-size: 14px;
       }
+      
+      .tab {
+        min-width: 70px;
+        padding: 8px 3px;
+        font-size: 14px;
+      }
     }
   </style>
 </head>
@@ -243,6 +252,7 @@
     </div>
   </div>
 
+  <!-- 以下、セクション内容は変更なし（元のまま） -->
   <section class="start" id="start">
     <h1>バイト求人</h1>
     <div class="card">
