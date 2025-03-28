@@ -93,6 +93,65 @@
       height: 500px;
     }
 
+    /* 仕事内容セクションのスタイル */
+    .job-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 30px;
+      margin-bottom: 40px;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .job-item.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .job-image {
+      flex: 0 0 300px;
+    }
+
+    .job-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .job-description {
+      flex: 1;
+    }
+
+    .job-description h3 {
+      color: #2c3e50;
+      margin-top: 0;
+    }
+
+    .job-description ul {
+      padding-left: 20px;
+    }
+
+    .job-description li {
+      margin-bottom: 8px;
+    }
+
+    button {
+      padding: 12px 24px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
     @media screen and (max-width: 1000px) {
       .banner-wrapper {
         width: 100%;
@@ -103,6 +162,18 @@
       }
       h1 {
         font-size: clamp(20px, 5vw, 36px);
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .job-item, .job-item.reverse {
+        flex-direction: column;
+      }
+      
+      .job-image {
+        flex: 0 0 auto;
+        width: 100%;
+        margin-bottom: 15px;
       }
     }
   </style>
@@ -144,13 +215,55 @@
 
   <section class="job" id="job">
     <h2>仕事内容</h2>
-    <h3>【朝】布団上げ</h3>
-    <p>各部屋のシーツ・枕カバーを回収し、布団をタンスに戻します。</p>
-    <h3>【夜】布団敷き</h3>
-    <p>3人1組で各部屋の布団を敷きます。</p>
-    <h3>【朝・夜 共通】食器洗い、片付け・会場設営</h3>
-    <p>洗浄機で食器を洗い、所定の位置に戻します。</p>
-    <p>図面通りに机や椅子、演台などを運びます。</p>
+    
+    <!-- 布団上げの作業 -->
+    <div class="job-item">
+      <div class="job-image">
+        <img src="images/futon.jpg" alt="布団上げの様子">
+      </div>
+      <div class="job-description">
+        <h3>【朝】布団上げ</h3>
+        <p>各部屋のシーツ・枕カバーを回収し、布団をタンスに戻します。</p>
+        <ul>
+          <li>1人あたり10〜15部屋を担当</li>
+          <li>清潔なシーツと交換</li>
+          <li>タンスへの収納は折り方を統一</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 布団敷きの作業 -->
+    <div class="job-item reverse">
+      <div class="job-image">
+        <img src="images/futon_shiki.jpg" alt="布団敷きの様子">
+      </div>
+      <div class="job-description">
+        <h3>【夜】布団敷き</h3>
+        <p>3人1組で各部屋の布団を敷きます。</p>
+        <ul>
+          <li>1時間あたり約20部屋を処理</li>
+          <li>チームワークが重要</li>
+          <li>新人には先輩が付いて指導</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 共通作業 -->
+    <div class="job-item">
+      <div class="job-image">
+        <img src="images/dishes.jpg" alt="食器洗いの様子">
+      </div>
+      <div class="job-description">
+        <h3>【朝・夜 共通】食器洗い、片付け・会場設営</h3>
+        <p>洗浄機で食器を洗い、所定の位置に戻します。</p>
+        <ul>
+          <li>食器洗浄機の操作を習得</li>
+          <li>割れ物の扱いに注意</li>
+          <li>効率的な配置を学習</li>
+        </ul>
+        <p>図面通りに机や椅子、演台などを運びます。</p>
+      </div>
+    </div>
   </section>
 
   <section class="salary" id="salary">
