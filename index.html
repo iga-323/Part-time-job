@@ -278,7 +278,7 @@
       background-color: #45a049;
     }
 
-    /* スマホ表示時の調整 */
+ /* スマホ表示時の調整 */
     @media screen and (max-width: 768px) {
       .card {
         padding: 15px;
@@ -287,28 +287,44 @@
       .shift-table th, 
       .shift-table td {
         padding: 8px;
-        font-size: 14px;
+        font-size: 13px; /* 14px → 13pxに変更 */
       }
       
       .tab {
         width: 110px;
-        font-size: 13px;
+        font-size: 12px; /* 13px → 12pxに変更 */
         padding: 6px 3px;
       }
       
       h1 {
-        font-size: 1.8em;
+        font-size: 1.7em; /* 1.8em → 1.7emに変更 */
       }
       
       h2 {
-        font-size: 1.5em;
+        font-size: 1.4em; /* 1.5em → 1.4emに変更 */
       }
       
       h3 {
-        font-size: 1.2em;
+        font-size: 1.1em; /* 1.2em → 1.1emに変更 */
+      }
+
+      body {
+        font-size: 14px; /* ベースのフォントサイズを少し小さく */
       }
     }
-  </style>
+
+    /* セクション見出しのアンダーバーを一色に */
+    h2 {
+      margin-top: 0;
+      color: #2c3e50;
+      text-align: left;
+      font-size: 1.8em;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #4CAF50; /* 下線を一色に変更 */
+      margin-bottom: 20px;
+      position: relative;
+    }
+</style>
 </head>
 <body>
   <div class="banner-wrapper">
