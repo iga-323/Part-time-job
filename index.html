@@ -709,108 +709,100 @@
     </div>
   </section>
 
- <script>
-  // デバイス切り替え機能
-  const switchViewBtn = document.getElementById('switch-view');
-  let isMobileView = true;
-  
-  function updateView() {
-    if (isMobileView) {
-      document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=1200');
-      switchViewBtn.textContent = 'スマホ版へ';
-    } else {
-      document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=1.0');
-      switchViewBtn.textContent = 'PC版へ';
-    }
-    isMobileView = !isMobileView;
-  }
-  
-  if (switchViewBtn) {
-    switchViewBtn.addEventListener('click', updateView);
-  }
-
-  // ページ読み込み時の処理
-  window.addEventListener('load', function() {
-    document.querySelector('#start').scrollIntoView();
-  });
-
-  // タブのアクティブ状態管理
-  const tabs = document.querySelectorAll('.tab');
-  const sections = document.querySelectorAll('section');
-
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 130;
-      if (pageYOffset >= sectionTop) {
-        current = section.getAttribute('id');
-      }
-    });
+  <script>
+    // デバイス切り替え機能
+    const switchViewBtn = document.getElementById('switch-view');
+    let isMobileView = true;
     
-    tabs.forEach(tab => {
-      tab.style.backgroundColor = '#F08080';
-      if (tab.getAttribute('href') === `#${current}`) {
-        tab.style.backgroundColor = '#FF6347';
+    function updateView() {
+      if (isMobileView) {
+        document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=1200');
+        switchViewBtn.textContent = 'スマホ版へ';
+      } else {
+        document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=1.0');
+        switchViewBtn.textContent = 'PC版へ';
+      }
+      isMobileView = !isMobileView;
+    }
+
+    if (switchViewBtn) {
+      switchViewBtn.addEventListener('click', updateView);
+    }
+
+    // ページ読み込み時の処理
+    window.addEventListener('load', function() {
+      document.querySelector('#start').scrollIntoView();
+    });
+
+    // タブのアクティブ状態管理
+    const tabs = document.querySelectorAll('.tab');
+    const sections = document.querySelectorAll('section');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 130;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      tabs.forEach(tab => {
+        tab.style.backgroundColor = '#F08080';
+        if (tab.getAttribute('href') === `#${current}`) {
+          tab.style.backgroundColor = '#FF6347';
+        }
+      });
+    });
+
+    // 画像拡大表示機能
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("expandedImage");
+    const closeBtn = document.querySelector(".close");
+    const loader = document.querySelector(".loader");
+    const modalCaption = document.getElementById('caption');
+
+    document.querySelectorAll('.image-card img').forEach(img => {
+      img.addEventListener('click', function() {
+        modal.style.display = "block";
+        loader.style.display = 'block';
+        modalImg.src = this.src;
+        modalCaption.textContent = this.alt;
+      });
+    });
+
+    modalImg.onload = function() {
+      loader.style.display = 'none';
+    };
+    modalImg.onerror = function() {
+      loader.style.display = 'none';
+      modalCaption.textContent = '画像の読み込みに失敗しました';
+    };
+
+    closeBtn.addEventListener('click', function() {
+      modal.style.display = "none";
+    });
+
+    window.addEventListener('click', function(event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
       }
     });
-  });
 
-  // 画像拡大表示機能 (改良版)
-  const modal = document.getElementById("imageModal");
-  const modalImg = document.getElementById("expandedImage");
-  const closeBtn = document.querySelector(".close");
-  const loader = document.createElement('div');
-  loader.className = 'loader';
-  document.body.appendChild(loader);
-  
-  const modalCaption = document.createElement('div');
-  modalCaption.id = 'caption';
-  modal.appendChild(modalCaption);
-
-  // すべての画像にクリックイベントを追加
-  document.querySelectorAll('.image-card img').forEach(img => {
-    img.addEventListener('click', function() {
-      modal.style.display = "block";
-      loader.style.display = 'block';
-      modalImg.src = this.src;
-      modalCaption.textContent = this.alt;
+    document.addEventListener('keydown', function(event) {
+      if (event.key === "Escape" && modal.style.display === "block") {
+        modal.style.display = "none";
+      }
     });
-  });
+  </script>
 
-  // 画像読み込み完了/エラー処理
-  modalImg.onload = function() {
-    loader.style.display = 'none';
-  };
-  modalImg.onerror = function() {
-    loader.style.display = 'none';
-    modalCaption.textContent = '画像の読み込みに失敗しました';
-  };
-
-  // 閉じるボタン
-  closeBtn.addEventListener('click', function() {
-    modal.style.display = "none";
-  });
-
-  // モーダル外側をクリックしても閉じる
-  window.addEventListener('click', function(event) {
-    if (event.target === modal) {
-      modal.style.display = "none";
-    }
-  });
-
-  // ESCキーでモーダルを閉じる
-  document.addEventListener('keydown', function(event) {
-    if (event.key === "Escape" && modal.style.display === "block") {
-      modal.style.display = "none";
-    }
-  });
-</script>
-
-<div id="imageModal" class="modal">
-  <span class="close">&times;</span>
-  <img class="modal-content" id="expandedImage">
-  <div id="caption"></div>
-</div>
-<div class="loader"></div>
+  <!-- モーダル本体 -->
+  <div id="imageModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="expandedImage">
+    <div id="caption"></div>
+  </div>
+  <div class="loader"></div>
 </body>
 </html>
+
