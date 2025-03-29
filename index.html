@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +20,7 @@
       margin: 15px 0;
       text-align: left;
     }
+
     .device-switcher button {
       background: #4CAF50;
       color: white;
@@ -30,6 +32,7 @@
       font-weight: bold;
       transition: all 0.3s;
     }
+
     .device-switcher button.active {
       background: #2E7D32;
     }
@@ -48,7 +51,7 @@
       left: 0;
       right: 0;
       background-color: #fdf5e6;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       z-index: 1000;
       border-radius: 8px;
       overflow: hidden;
@@ -105,20 +108,40 @@
       padding: 20px;
     }
 
-    section.start { background-color: #e8f4f8; }
-    section.shift { background-color: #fff8e1; }
-    section.job { background-color: #e6f0ff; }
-    section.salary { background-color: #ffffe0; }
-    section.atmosphere { background-color: #ffe4c4; }
-    section.form { background-color: #e8f5e9; }
-    section.access { background-color: #ffe4e1; }
+    section.start {
+      background-color: #e8f4f8;
+    }
+
+    section.shift {
+      background-color: #fff8e1;
+    }
+
+    section.job {
+      background-color: #e6f0ff;
+    }
+
+    section.salary {
+      background-color: #ffffe0;
+    }
+
+    section.atmosphere {
+      background-color: #ffe4c4;
+    }
+
+    section.form {
+      background-color: #e8f5e9;
+    }
+
+    section.access {
+      background-color: #ffe4e1;
+    }
 
     h1 {
       color: #2c3e50;
       text-align: center;
       margin-bottom: 20px;
       font-size: 2.2em;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
     }
 
     h2 {
@@ -144,7 +167,7 @@
     .card {
       background-color: white;
       border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       padding: 10px;
       margin-bottom: 20px;
       word-break: break-word;
@@ -160,7 +183,8 @@
       margin: 15px 0;
     }
 
-    .shift-table th, .shift-table td {
+    .shift-table th,
+    .shift-table td {
       border: 1px solid #ddd;
       padding: 10px;
       text-align: center;
@@ -207,7 +231,7 @@
       height: auto;
       max-height: 180px;
       border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
       object-fit: cover;
       transition: transform 0.3s ease;
       cursor: pointer;
@@ -273,7 +297,7 @@
         height: 220px;
         max-height: none;
       }
-      
+
       .image-card-content {
         padding-left: 25px;
       }
@@ -288,44 +312,49 @@
 
     /* スマホ表示時の調整 */
     @media screen and (max-width: 768px) {
-    .card {
-      padding: 10px; /* 少しコンパクトに */
+      .card {
+        padding: 10px;
+        /* 少しコンパクトに */
+      }
+
+      .shift-table th,
+      .shift-table td {
+        padding: 6px;
+        font-size: 13px;
+        /* 小さめに */
+      }
+
+      .tab {
+        width: 100px;
+        /* 横幅も少し狭く */
+        font-size: 12px;
+        padding: 5px 3px;
+      }
+
+      h1 {
+        font-size: 1.6em;
+        /* 全体に小さめに */
+      }
+
+      h2 {
+        font-size: 1.3em;
+      }
+
+      h3 {
+        font-size: 1.1em;
+      }
+
+      body {
+        font-size: 14px;
+        /* ベースも少し下げる */
+      }
+
+      .image-card img {
+        max-height: 200px;
+      }
     }
 
-    .shift-table th, 
-    .shift-table td {
-      padding: 6px;
-      font-size: 13px; /* 小さめに */
-    }
-
-    .tab {
-      width: 100px; /* 横幅も少し狭く */
-      font-size: 12px;
-      padding: 5px 3px;
-    }
-
-    h1 {
-      font-size: 1.6em; /* 全体に小さめに */
-    }
-
-    h2 {
-      font-size: 1.3em;
-    }
-
-    h3 {
-      font-size: 1.1em;
-    }
-
-    body {
-      font-size: 14px; /* ベースも少し下げる */
-    }
-
-    .image-card img {
-      max-height: 200px;
-    }
-  }
-
-   /* モーダルスタイル */
+    /* モーダルスタイル */
     .modal {
       display: none;
       position: fixed;
@@ -334,7 +363,7 @@
       top: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,0.9);
+      background-color: rgba(0, 0, 0, 0.9);
       overflow: auto;
     }
 
@@ -350,36 +379,46 @@
       transform: translate(-50%, -50%);
     }
 
-    .modal-content, #caption {
+    .modal-content,
+    #caption {
       animation-name: zoom;
       animation-duration: 0.6s;
     }
 
     @keyframes zoom {
-      from {transform: translate(-50%, -50%) scale(0.1)}
-      to {transform: translate(-50%, -50%) scale(1)}
+      from {
+        transform: translate(-50%, -50%) scale(0.1)
+      }
+
+      to {
+        transform: translate(-50%, -50%) scale(1)
+      }
     }
 
     .close {
-  position: absolute;
-  top: 10px;     /* 上端からの距離を短く */
-  right: 10px;   /* 画像の右端に近づける */
-  color: #f1f1f1;
-  font-size: 30px;  /* 少し小さめにしてスマホでも押しやすく */
-  font-weight: bold;
-  background-color: rgba(0, 0, 0, 0.5); /* 背景をつけて視認性UP */
-  padding: 6px 12px;
-  border-radius: 4px;
-  transition: 0.3s;
-  cursor: pointer;
-  z-index: 10;
-}
+      position: absolute;
+      top: 10px;
+      /* 上端からの距離を短く */
+      right: 10px;
+      /* 画像の右端に近づける */
+      color: #f1f1f1;
+      font-size: 30px;
+      /* 少し小さめにしてスマホでも押しやすく */
+      font-weight: bold;
+      background-color: rgba(0, 0, 0, 0.5);
+      /* 背景をつけて視認性UP */
+      padding: 6px 12px;
+      border-radius: 4px;
+      transition: 0.3s;
+      cursor: pointer;
+      z-index: 10;
+    }
 
-.close:hover,
-.close:focus {
-  background-color: rgba(0, 0, 0, 0.8);
-  color: #fff;
-}
+    .close:hover,
+    .close:focus {
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #fff;
+    }
 
     /* キャプション */
     #caption {
@@ -388,29 +427,31 @@
       margin-top: 15px;
       font-size: 1.2em;
     }
-    @media only screen and (max-width: 768px){
-  .modal-content {
-    width: 95%;
-  }
 
-  .close {
-    font-size: 26px;
-    top: 8px;
-    right: 8px;
-    padding: 4px 10px;
-  }
-}
+    @media only screen and (max-width: 768px) {
+      .modal-content {
+        width: 95%;
+      }
+
+      .close {
+        font-size: 26px;
+        top: 8px;
+        right: 8px;
+        padding: 4px 10px;
+      }
+    }
   </style>
 </head>
+
 <body>
 
-<div id="imageModal" class="modal">
-  <span class="close">&times;</span>
-  <img class="modal-content" id="expandedImage">
-  <div id="caption"></div>
-</div>
-<div class="loader"></div>
- 
+  <div id="imageModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="expandedImage">
+    <div id="caption"></div>
+  </div>
+  <div class="loader"></div>
+
   <div class="banner-wrapper">
     <div class="banner" id="banner">
       <div class="banner-inner">
@@ -425,12 +466,12 @@
       </div>
     </div>
   </div>
- <section class="start" id="start">
+  <section class="start" id="start">
     <div class="device-switcher">
       <button id="switch-view">PC版へ</button>
     </div>
     <h1>〇〇バイト求人</h1>
-   <p>ver４.２</p>
+    <p>ver４.２</p>
     <div class="card">
       <p>ご覧いただき、ありがとうございます。</p>
       <p>こちらのサイトは〇〇バイトの応募者様向けのページとなっております。</p>
@@ -442,7 +483,7 @@
 
   <section class="shift" id="shift">
     <h2>シフト</h2>
-    
+
     <div class="card">
       <h3>勤務時間</h3>
       <table class="shift-table">
@@ -461,29 +502,31 @@
           </tr>
           <tr>
             <td>夜</td>
-            <td><p>17:30(5~9月)</p>
+            <td>
+              <p>17:30(5~9月)</p>
               <p>18:00(その他)</p>
             </td>
             <td>22:00~23:00</td>
           </tr>
         </tbody>
       </table>
-        <li>シフトは朝と夜に分かれております</li>
-        <li>夜は時期によって開始時間が異なります</li>
-        <li>途中からの勤務や途中退勤もOK</li>
+      <li>シフトは朝と夜に分かれております</li>
+      <li>夜は時期によって開始時間が異なります</li>
+      <li>途中からの勤務や途中退勤もOK</li>
       <p>(例)</p>
       <p>『5/11　夜は18:30〜』</p>
       <p>のようにシフト提出時にLINEで伝えてください</p>
     </div>
-    
+
     <div class="card image-card">
       <img src="pictures/シフト提出.png" alt="シフト提出">
       <div class="image-card-content">
-      <h3>シフト提出方法</h3>
+        <h3>シフト提出方法</h3>
         <p>月末に翌月分のシフトを提出していただきます。</p>
         <ul>
           <li>LINEの日程調整機能で送ります。</li>
-          <li><p>朝と夜を分けて提出（片方だけでもOK）</p>
+          <li>
+            <p>朝と夜を分けて提出（片方だけでもOK）</p>
         </ul>
       </div>
     </div>
@@ -491,18 +534,18 @@
 
   <section class="job" id="job">
     <h2>仕事内容</h2>
-    
+
     <div class="card image-card">
       <img src="pictures/布団上げ.jpg" alt="布団上げ">
       <div class="image-card-content">
         <h3>【朝】布団上げ</h3>
-         <p>　各部屋のシーツ・枕カバーを回収します。</p>
-          <ul>
-            <li>端末でお客様の退出状況をチェック</li>
-            <li>空いたらシーツと枕カバーを回収</li>
-            <li>布団を折りたたんでタンスにしまう</li>
-            <li>一人あたり〇〇部屋ほど</li>
-          </ul>
+        <p>　各部屋のシーツ・枕カバーを回収します。</p>
+        <ul>
+          <li>端末でお客様の退出状況をチェック</li>
+          <li>空いたらシーツと枕カバーを回収</li>
+          <li>布団を折りたたんでタンスにしまう</li>
+          <li>一人あたり〇〇部屋ほど</li>
+        </ul>
       </div>
     </div>
 
@@ -512,12 +555,12 @@
       <div class="image-card-content">
         <h3>【夜】布団敷き</h3>
         <p>　3人1組で各部屋の布団を敷きます。</p>
-        <ul>      
+        <ul>
           <li>お客様が食事のタイミングに行う</li>
           <li>１組あたり５０枚ほど</li>
           <li>慣れてきたら雑談しながらでもOK</li>
         </ul>
-      </div> 
+      </div>
     </div>
 
     <div class="card image-card">
@@ -528,18 +571,18 @@
         <ul>
           <li>食器を並べて食洗機に入れる</li>
           <li>食器を回収して収納場所へ</li>
-          <li>洗った食器を所定の位置にしまう</li>                         
+          <li>洗った食器を所定の位置にしまう</li>
         </ul>
       </div>
     </div>
 
- 
+
     <div class="card image-card">
       <img src="pictures/会場.jpg" alt="会場設営">
       <div class="image-card-content">
         <h3>【朝・夜 共通】会場設営</h3>
         <p>　図面通りに机や椅子、演台などを配置します。</p>
-        <ul>   
+        <ul>
           <li>日によって会場設営がある</li>
           <li>図面の通りに配置</li>
           <li>机の高さ調整をして完了</li>
@@ -550,7 +593,7 @@
 
   <section class="salary" id="salary">
     <h2>給料</h2>
-    
+
     <div class="card">
       <h3>　時給について</h3>
       <ul>
@@ -559,7 +602,7 @@
         <li>支払日:　毎月末（20日締め）</li>
       </ul>
     </div>
-    
+
     <div class="card image-card">
       <img src="pictures/賄い.jpg" alt="賄い">
       <div class="image-card-content">
@@ -576,58 +619,62 @@
 
   <section class="atmosphere" id="atmosphere">
     <h2>Q&A</h2>
-    
+
     <div class="card qa-card">
       <div class="question">Q. どんな人が働いていますか？</div>
-      <div class="answer"> <p>A. 現在<span style="color: red;">〇〇の学生</span>が多く活躍しております。</p>
+      <div class="answer">
+        <p>A. 現在<span style="color: red;">〇〇の学生</span>が多く活躍しております。</p>
         <p>同じ学部の方はもちろん、他学部・他大学の方もお待ちしております！</p>
       </div>
     </div>
     <div class="card qa-card">
       <div class="question">Q. 1日に何人くらい働いていますか？</div>
-      <div class="answer"><p>A. 学生バイトは<span style="color: red;">3〜5人</span>です。</p>
+      <div class="answer">
+        <p>A. 学生バイトは<span style="color: red;">3〜5人</span>です。</p>
         <p>加えて社員やパートの方々と一緒に働いております。</p>
       </div>
     </div>
-    
+
     <div class="card qa-card">
       <div class="question">Q. シフトの頻度はどのくらいですか？</div>
-      <div class="answer"><p>A. 週に<span style="color: red;">１~３日</span>の方が多いです。</p>
+      <div class="answer">
+        <p>A. 週に<span style="color: red;">１~３日</span>の方が多いです。</p>
         <p>多い人だと週に６日間働いたり、土日に朝・夜の両方で働く方もいます。</p>
         <p>朝と夜があるため履修登録に応じて働き方を変えることができます。</p>
       </div>
     </div>
-    
+
     <div class="card qa-card">
       <div class="question">Q. 服装に決まりはありますか？</div>
       <div class="answer">A. <span style="color: red;">Tシャツを購入</span>していただきます。（２枚で円）</p>
         <p>ズボンに関しては自由ですが、派手なものはご遠慮ください。</p>
       </div>
     </div>
-      
+
     <div class="card qa-card">
       <div class="question">Q. 通勤手段は？</div>
-      <div class="answer"><p>A. <span style="color: red;">車や自転車</span>の方が多いです。</p>
+      <div class="answer">
+        <p>A. <span style="color: red;">車や自転車</span>の方が多いです。</p>
         <p>原付・バイク用の駐輪場もございます。<a href="#access" class="tab">駐車場</a></p>
       </div>
     </div>
-      
+
     <div class="card qa-card">
       <div class="question">Q. 友達と応募しても大丈夫ですか？</div>
-      <div class="answer"><p>A. ぜひ！皆さまお誘いあわせのうえ、<span style="color: red;">代表者の方1名</span>が応募フォームからお申し込みください。</p>
+      <div class="answer">
+        <p>A. ぜひ！皆さまお誘いあわせのうえ、<span style="color: red;">代表者の方1名</span>が応募フォームからお申し込みください。</p>
       </div>
     </div>
   </section>
 
-  <section class="form" id="form"> 
+  <section class="form" id="form">
     <h2>応募フォーム</h2>
-    
+
     <div class="card" style="text-align: center;">
       <p>　</p>
       <p>バイトのお申込みはこちらから↓</p>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSd11-sAh7V1OJ_15l2_tCHFjh-cCd67yH134GS6yGLmKIdq0A/viewform?usp=sf_link" 
-         class="form-button" 
-         target="_blank">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSd11-sAh7V1OJ_15l2_tCHFjh-cCd67yH134GS6yGLmKIdq0A/viewform?usp=sf_link"
+        class="form-button" target="_blank">
         応募フォームを開く
       </a>
       <p>　</p>
@@ -640,7 +687,7 @@
         <li style="text-align: left;">面接時間は(~)の中からお願いいたします</li>
       </ul>
     </div>
-    
+
     <div class="card">
       <h3>　お申込が済んだら</h3>
       <ul>
@@ -650,7 +697,7 @@
         <li>迷惑フォルダに入る場合があるためご確認ください</li>
       </ul>
     </div>
-    
+
     <div class="card">
       <h3>　面接当日の流れ</h3>
       <ul>
@@ -658,7 +705,7 @@
         <li>正面玄関より入り受付に面接の旨をお伝えください</li>
         <li>当日は車でお越しいただいても構いません</li>
         <a href="#access" class="tab">駐車場</a>
-      </li>
+        </li>
       </ul>
       <p>　</p>
       <h3>　面接内容(15分程度)</h3>
@@ -673,7 +720,7 @@
 
   <section class="access" id="access">
     <h2>アクセス</h2>
-    
+
     <div class="card map-card">
       <h3>○○施設</h3>
       <p>〒　住所</p>
@@ -689,7 +736,7 @@
         <p>車の方はこちらの駐車場をご利用いただけます。看板が目印です。</p>
       </div>
     </div>
-    
+
     <div class="card image-card">
       <img src="pictures/自転車駐車場.jpg" alt="駐輪場">
       <div class="image-card-content">
@@ -699,98 +746,98 @@
     </div>
   </section>
 
-<script>
-  // デバイス切り替え機能
-  const switchViewBtn = document.getElementById('switch-view');
-  let isMobileView = true;
+  <script>
+    // デバイス切り替え機能
+    const switchViewBtn = document.getElementById('switch-view');
+    let isMobileView = true;
 
-  function updateView() {
-    if (isMobileView) {
-      document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=1200');
-      switchViewBtn.textContent = 'スマホ版へ';
-    } else {
-      document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=1.0');
-      switchViewBtn.textContent = 'PC版へ';
+    function updateView() {
+      if (isMobileView) {
+        document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=1200');
+        switchViewBtn.textContent = 'スマホ版へ';
+      } else {
+        document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=1.0');
+        switchViewBtn.textContent = 'PC版へ';
+      }
+      isMobileView = !isMobileView;
     }
-    isMobileView = !isMobileView;
-  }
 
-  if (switchViewBtn) {
-    switchViewBtn.addEventListener('click', updateView);
-  }
+    if (switchViewBtn) {
+      switchViewBtn.addEventListener('click', updateView);
+    }
 
-  // ページ読み込み時の処理
-  window.addEventListener('load', function () {
-    document.querySelector('#start').scrollIntoView();
-  });
+    // ページ読み込み時の処理
+    window.addEventListener('load', function () {
+      document.querySelector('#start').scrollIntoView();
+    });
 
-  // タブのアクティブ状態管理
-  const tabs = document.querySelectorAll('.tab');
-  const sections = document.querySelectorAll('section');
+    // タブのアクティブ状態管理
+    const tabs = document.querySelectorAll('.tab');
+    const sections = document.querySelectorAll('section');
 
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 130;
-      if (pageYOffset >= sectionTop) {
-        current = section.getAttribute('id');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 130;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      tabs.forEach(tab => {
+        tab.style.backgroundColor = '#F08080';
+        if (tab.getAttribute('href') === `#${current}`) {
+          tab.style.backgroundColor = '#FF6347';
+        }
+      });
+    });
+
+    // 画像拡大表示（モーダル）
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("expandedImage");
+    const caption = document.getElementById("caption");
+    const closeBtn = document.querySelector(".close");
+    const loader = document.querySelector(".loader");
+
+    // 画像をクリックしたときの処理
+    document.querySelectorAll('.image-card img').forEach(img => {
+      img.addEventListener('click', function () {
+        loader.style.display = 'block';
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        caption.textContent = this.alt || '';
+      });
+    });
+
+    // 画像読み込み完了時の処理
+    modalImg.onload = () => {
+      loader.style.display = 'none';
+    };
+
+    modalImg.onerror = () => {
+      loader.style.display = 'none';
+      caption.textContent = '画像の読み込みに失敗しました';
+    };
+
+    // 閉じるボタンでモーダルを閉じる
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = "none";
+    });
+
+    // モーダルの外側クリックで閉じる
+    window.addEventListener('click', function (event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
       }
     });
 
-    tabs.forEach(tab => {
-      tab.style.backgroundColor = '#F08080';
-      if (tab.getAttribute('href') === `#${current}`) {
-        tab.style.backgroundColor = '#FF6347';
+    // ESCキーでモーダルを閉じる
+    document.addEventListener('keydown', function (event) {
+      if (event.key === "Escape" && modal.style.display === "block") {
+        modal.style.display = "none";
       }
     });
-  });
-
-  // 画像拡大表示（モーダル）
-  const modal = document.getElementById("imageModal");
-  const modalImg = document.getElementById("expandedImage");
-  const caption = document.getElementById("caption");
-  const closeBtn = document.querySelector(".close");
-  const loader = document.querySelector(".loader");
-
-  // 画像をクリックしたときの処理
-  document.querySelectorAll('.image-card img').forEach(img => {
-    img.addEventListener('click', function () {
-      loader.style.display = 'block';
-      modal.style.display = "block";
-      modalImg.src = this.src;
-      caption.textContent = this.alt || '';
-    });
-  });
-
-  // 画像読み込み完了時の処理
-  modalImg.onload = () => {
-    loader.style.display = 'none';
-  };
-
-  modalImg.onerror = () => {
-    loader.style.display = 'none';
-    caption.textContent = '画像の読み込みに失敗しました';
-  };
-
-  // 閉じるボタンでモーダルを閉じる
-  closeBtn.addEventListener('click', () => {
-    modal.style.display = "none";
-  });
-
-  // モーダルの外側クリックで閉じる
-  window.addEventListener('click', function (event) {
-    if (event.target === modal) {
-      modal.style.display = "none";
-    }
-  });
-
-  // ESCキーでモーダルを閉じる
-  document.addEventListener('keydown', function (event) {
-    if (event.key === "Escape" && modal.style.display === "block") {
-      modal.style.display = "none";
-    }
-  });
-</script>
+  </script>
 
   <!-- モーダル本体 -->
   <div id="imageModal" class="modal">
@@ -800,5 +847,5 @@
   </div>
   <div class="loader"></div>
 </body>
-</html>
 
+</html>
