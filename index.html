@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>バイト情報ページ</title>
-  <style>
+<style>
     /* 基本設定 */
     body {
       background-color: #B0E0E6;
@@ -14,7 +8,7 @@
       padding-top: 70px;
     }
 
-    /* デバイス切り替えボタン（startセクション内に左揃え） */
+    /* デバイス切り替えボタン */
     .device-switcher {
       margin: 15px 0;
       text-align: left;
@@ -205,7 +199,7 @@
     .image-card img {
       width: 100%;
       height: auto;
-      max-height: 180px;
+      max-height: 160px;
       border-radius: 5px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
       object-fit: cover;
@@ -258,17 +252,24 @@
       .image-card {
         flex-direction: row;
         align-items: flex-start;
-        gap: 25px;
+        gap: 20px;
       }
       
       .image-card img {
-        width: 300px;
-        height: 220px;
+        width: 280px;
+        height: 200px;
         max-height: none;
       }
       
       .image-card-content {
-        padding-left: 25px;
+        padding-left: 20px;
+      }
+
+      /* カードの幅を少し小さく */
+      .card {
+        max-width: 95%;
+        margin-left: auto;
+        margin-right: auto;
       }
     }
 
@@ -305,12 +306,7 @@
       body {
         font-size: 14px;
       }
-      
-      .image-card img {
-        max-height: 160px;
-      }
     }
-  </style>
 </style>
 </head>
 <body>
