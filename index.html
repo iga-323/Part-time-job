@@ -325,100 +325,75 @@
     }
   }
 
-    /* モーダルスタイル */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 2000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.9);
-    overflow: auto;
-  }
+   /* モーダルスタイル */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      overflow: auto;
+    }
 
-  .modal-content {
-    margin: auto;
-    display: block;
-    width: 90%;
-    max-width: 800px;
-    max-height: 90vh;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .modal-content, #caption {
-    animation-name: zoom;
-    animation-duration: 0.6s;
-  }
-
-  @keyframes zoom {
-    from {transform: translate(-50%, -50%) scale(0.1)}
-    to {transform: translate(-50%, -50%) scale(1)}
-  }
-
-  .close {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    transition: 0.3s;
-  }
-
-  .close:hover,
-  .close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  /* ローダースタイル */
-  .loader {
-    display: none;
-    border: 5px solid #f3f3f3;
-    border-top: 5px solid #3498db;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 2s linear infinite;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2001;
-  }
-  
-  @keyframes spin {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(360deg); }
-  }
-  
-  #caption {
-    color: white;
-    text-align: center;
-    margin-top: 15px;
-    font-size: 1.2em;
-  }
-
-  @media only screen and (max-width: 768px){
     .modal-content {
-      width: 95%;
+      margin: auto;
+      display: block;
+      width: 90%;
+      max-width: 800px;
+      max-height: 90vh;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
-  
+
+    .modal-content, #caption {
+      animation-name: zoom;
+      animation-duration: 0.6s;
+    }
+
+    @keyframes zoom {
+      from {transform: translate(-50%, -50%) scale(0.1)}
+      to {transform: translate(-50%, -50%) scale(1)}
+    }
+
     .close {
-      font-size: 30px;
-      top: 10px;
-      right: 20px;
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
     }
-  }
+
+    .close:hover,
+    .close:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* キャプション */
+    #caption {
+      color: white;
+      text-align: center;
+      margin-top: 15px;
+      font-size: 1.2em;
+    }
   </style>
 </head>
 <body>
+
+<div id="imageModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="expandedImage">
+  <div id="caption"></div>
+</div>
+<div class="loader"></div>
  
   <div class="banner-wrapper">
     <div class="banner" id="banner">
@@ -439,7 +414,7 @@
       <button id="switch-view">PC版へ</button>
     </div>
     <h1>〇〇バイト求人</h1>
-   <p>ver３</p>
+   <p>ver４</p>
     <div class="card">
       <p>ご覧いただき、ありがとうございます。</p>
       <p>こちらのサイトは〇〇バイトの応募者様向けのページとなっております。</p>
@@ -541,7 +516,6 @@
         </ul>
       </div>
     </div>
-
 
  
     <div class="card image-card">
@@ -709,92 +683,98 @@
     </div>
   </section>
 
-  <script>
-    // デバイス切り替え機能
-    const switchViewBtn = document.getElementById('switch-view');
-    let isMobileView = true;
-    
-    function updateView() {
-      if (isMobileView) {
-        document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=1200');
-        switchViewBtn.textContent = 'スマホ版へ';
-      } else {
-        document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=1.0');
-        switchViewBtn.textContent = 'PC版へ';
+<script>
+  // デバイス切り替え機能
+  const switchViewBtn = document.getElementById('switch-view');
+  let isMobileView = true;
+
+  function updateView() {
+    if (isMobileView) {
+      document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=1200');
+      switchViewBtn.textContent = 'スマホ版へ';
+    } else {
+      document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=1.0');
+      switchViewBtn.textContent = 'PC版へ';
+    }
+    isMobileView = !isMobileView;
+  }
+
+  if (switchViewBtn) {
+    switchViewBtn.addEventListener('click', updateView);
+  }
+
+  // ページ読み込み時の処理
+  window.addEventListener('load', function () {
+    document.querySelector('#start').scrollIntoView();
+  });
+
+  // タブのアクティブ状態管理
+  const tabs = document.querySelectorAll('.tab');
+  const sections = document.querySelectorAll('section');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 130;
+      if (pageYOffset >= sectionTop) {
+        current = section.getAttribute('id');
       }
-      isMobileView = !isMobileView;
-    }
-
-    if (switchViewBtn) {
-      switchViewBtn.addEventListener('click', updateView);
-    }
-
-    // ページ読み込み時の処理
-    window.addEventListener('load', function() {
-      document.querySelector('#start').scrollIntoView();
     });
 
-    // タブのアクティブ状態管理
-    const tabs = document.querySelectorAll('.tab');
-    const sections = document.querySelectorAll('section');
-
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 130;
-        if (pageYOffset >= sectionTop) {
-          current = section.getAttribute('id');
-        }
-      });
-      
-      tabs.forEach(tab => {
-        tab.style.backgroundColor = '#F08080';
-        if (tab.getAttribute('href') === `#${current}`) {
-          tab.style.backgroundColor = '#FF6347';
-        }
-      });
+    tabs.forEach(tab => {
+      tab.style.backgroundColor = '#F08080';
+      if (tab.getAttribute('href') === `#${current}`) {
+        tab.style.backgroundColor = '#FF6347';
+      }
     });
+  });
 
-    // 画像拡大表示機能
-    const modal = document.getElementById("imageModal");
-    const modalImg = document.getElementById("expandedImage");
-    const closeBtn = document.querySelector(".close");
-    const loader = document.querySelector(".loader");
-    const modalCaption = document.getElementById('caption');
+  // 画像拡大表示（モーダル）
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("expandedImage");
+  const caption = document.getElementById("caption");
+  const closeBtn = document.querySelector(".close");
+  const loader = document.querySelector(".loader");
 
-    document.querySelectorAll('.image-card img').forEach(img => {
-      img.addEventListener('click', function() {
-        modal.style.display = "block";
-        loader.style.display = 'block';
-        modalImg.src = this.src;
-        modalCaption.textContent = this.alt;
-      });
+  // 画像をクリックしたときの処理
+  document.querySelectorAll('.image-card img').forEach(img => {
+    img.addEventListener('click', function () {
+      loader.style.display = 'block';
+      modal.style.display = "block";
+      modalImg.src = this.src;
+      caption.textContent = this.alt || '';
     });
+  });
 
-    modalImg.onload = function() {
-      loader.style.display = 'none';
-    };
-    modalImg.onerror = function() {
-      loader.style.display = 'none';
-      modalCaption.textContent = '画像の読み込みに失敗しました';
-    };
+  // 画像読み込み完了時の処理
+  modalImg.onload = () => {
+    loader.style.display = 'none';
+  };
 
-    closeBtn.addEventListener('click', function() {
+  modalImg.onerror = () => {
+    loader.style.display = 'none';
+    caption.textContent = '画像の読み込みに失敗しました';
+  };
+
+  // 閉じるボタンでモーダルを閉じる
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = "none";
+  });
+
+  // モーダルの外側クリックで閉じる
+  window.addEventListener('click', function (event) {
+    if (event.target === modal) {
       modal.style.display = "none";
-    });
+    }
+  });
 
-    window.addEventListener('click', function(event) {
-      if (event.target === modal) {
-        modal.style.display = "none";
-      }
-    });
-
-    document.addEventListener('keydown', function(event) {
-      if (event.key === "Escape" && modal.style.display === "block") {
-        modal.style.display = "none";
-      }
-    });
-  </script>
+  // ESCキーでモーダルを閉じる
+  document.addEventListener('keydown', function (event) {
+    if (event.key === "Escape" && modal.style.display === "block") {
+      modal.style.display = "none";
+    }
+  });
+</script>
 
   <!-- モーダル本体 -->
   <div id="imageModal" class="modal">
