@@ -209,6 +209,12 @@
       border-radius: 5px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
       object-fit: cover;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .image-card img:hover {
+      transform: scale(1.02);
     }
 
     .image-card-content {
@@ -369,6 +375,34 @@
     color: #bbb;
     text-decoration: none;
     cursor: pointer;
+  }
+
+  /* ローダースタイル */
+  .loader {
+    display: none;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2001;
+  }
+  
+  @keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+  
+  #caption {
+    color: white;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 1.2em;
   }
 
   @media only screen and (max-width: 768px){
@@ -721,19 +755,36 @@
     });
   });
 
-  // 画像拡大表示機能
+  // 画像拡大表示機能 (改良版)
   const modal = document.getElementById("imageModal");
   const modalImg = document.getElementById("expandedImage");
   const closeBtn = document.querySelector(".close");
+  const loader = document.createElement('div');
+  loader.className = 'loader';
+  document.body.appendChild(loader);
+  
+  const modalCaption = document.createElement('div');
+  modalCaption.id = 'caption';
+  modal.appendChild(modalCaption);
 
   // すべての画像にクリックイベントを追加
   document.querySelectorAll('.image-card img').forEach(img => {
-    img.style.cursor = 'pointer';
     img.addEventListener('click', function() {
       modal.style.display = "block";
+      loader.style.display = 'block';
       modalImg.src = this.src;
+      modalCaption.textContent = this.alt;
     });
   });
+
+  // 画像読み込み完了/エラー処理
+  modalImg.onload = function() {
+    loader.style.display = 'none';
+  };
+  modalImg.onerror = function() {
+    loader.style.display = 'none';
+    modalCaption.textContent = '画像の読み込みに失敗しました';
+  };
 
   // 閉じるボタン
   closeBtn.addEventListener('click', function() {
@@ -746,10 +797,20 @@
       modal.style.display = "none";
     }
   });
+
+  // ESCキーでモーダルを閉じる
+  document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape" && modal.style.display === "block") {
+      modal.style.display = "none";
+    }
+  });
 </script>
+
 <div id="imageModal" class="modal">
   <span class="close">&times;</span>
   <img class="modal-content" id="expandedImage">
+  <div id="caption"></div>
 </div>
+<div class="loader"></div>
 </body>
 </html>
