@@ -1,4 +1,10 @@
-<style>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>バイト情報ページ</title>
+  <style>
     /* 基本設定 */
     body {
       background-color: #B0E0E6;
@@ -193,13 +199,13 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 15px;
+      gap: 20px;
     }
 
     .image-card img {
       width: 100%;
       height: auto;
-      max-height: 160px;
+      max-height: 180px;
       border-radius: 5px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
       object-fit: cover;
@@ -252,20 +258,20 @@
       .image-card {
         flex-direction: row;
         align-items: flex-start;
-        gap: 20px;
+        gap: 25px;
       }
       
       .image-card img {
-        width: 280px;
-        height: 200px;
+        width: 300px;
+        height: 220px;
         max-height: none;
       }
       
       .image-card-content {
-        padding-left: 20px;
+        padding-left: 25px;
       }
 
-      /* カードの幅を少し小さく */
+      /* カードの幅のみ小さく */
       .card {
         max-width: 95%;
         margin-left: auto;
@@ -282,34 +288,39 @@
       .shift-table th, 
       .shift-table td {
         padding: 8px;
-        font-size: 13px;
+        font-size: 14px;
       }
       
       .tab {
         width: 110px;
-        font-size: 12px;
+        font-size: 13px;
         padding: 6px 3px;
       }
       
       h1 {
-        font-size: 1.7em;
+        font-size: 1.8em;
       }
       
       h2 {
-        font-size: 1.4em;
+        font-size: 1.5em;
       }
       
       h3 {
-        font-size: 1.1em;
+        font-size: 1.2em;
       }
 
       body {
-        font-size: 14px;
+        font-size: 15px;
+      }
+      
+      .image-card img {
+        max-height: 180px;
       }
     }
-</style>
+  </style>
 </head>
 <body>
+ 
   <div class="banner-wrapper">
     <div class="banner" id="banner">
       <div class="banner-inner">
@@ -605,8 +616,8 @@
     </div>
   </section>
 
-  <script>
-    // デバイス切り替え機能
+ <script>
+    // JavaScript部分は変更なし
     const switchViewBtn = document.getElementById('switch-view');
     let isMobileView = true;
     
@@ -621,7 +632,9 @@
       isMobileView = !isMobileView;
     }
     
-    switchViewBtn.addEventListener('click', updateView);
+    if (switchViewBtn) {
+      switchViewBtn.addEventListener('click', updateView);
+    }
 
     // ページ読み込み時の処理
     window.addEventListener('load', function() {
@@ -635,7 +648,7 @@
     window.addEventListener('scroll', () => {
       let current = '';
       sections.forEach(section => {
-        const sectionTop = section.offsetTop - 130; /* バナーと切り替えタブの高さを考慮 */
+        const sectionTop = section.offsetTop - 130;
         if (pageYOffset >= sectionTop) {
           current = section.getAttribute('id');
         }
