@@ -11,13 +11,13 @@
       margin: 0;
       font-family: sans-serif;
       scroll-behavior: smooth;
-      padding-top: 70px; /* 元の値に戻す */
+      padding-top: 70px;
     }
 
     /* デバイス切り替えボタン（startセクション内に左揃え） */
     .device-switcher {
       margin: 15px 0;
-      text-align: left; /* 左揃え */
+      text-align: left;
     }
     .device-switcher button {
       background: #4CAF50;
@@ -40,10 +40,11 @@
       text-align: center;
       margin: 20px auto;
     }
-    /* ヘッダーバナー（デバイス切り替えタブの高さ分下げる） */
+
+    /* ヘッダーバナー */
     .banner-wrapper {
       position: fixed;
-      top: 0px; /* デバイス切り替えタブの高さ分下げる */
+      top: 0px;
       left: 0;
       right: 0;
       background-color: #fdf5e6;
@@ -198,12 +199,13 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 20px;
+      gap: 15px;
     }
 
     .image-card img {
       width: 100%;
       height: auto;
+      max-height: 180px;
       border-radius: 5px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
       object-fit: cover;
@@ -212,23 +214,6 @@
     .image-card-content {
       flex: 1;
       min-width: 0;
-    }
-
-    /* PC用レイアウト */
-    @media screen and (min-width: 769px) {
-      .image-card {
-        flex-direction: row;
-        align-items: flex-start;
-      }
-      
-      .image-card img {
-        width: 250px;
-        height: 180px;
-      }
-      
-      .image-card-content {
-        padding-left: 20px;
-      }
     }
 
     /* Q&Aスタイル */
@@ -268,7 +253,26 @@
       background-color: #45a049;
     }
 
- /* スマホ表示時の調整 */
+    /* PC用レイアウト */
+    @media screen and (min-width: 769px) {
+      .image-card {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 25px;
+      }
+      
+      .image-card img {
+        width: 300px;
+        height: 220px;
+        max-height: none;
+      }
+      
+      .image-card-content {
+        padding-left: 25px;
+      }
+    }
+
+    /* スマホ表示時の調整 */
     @media screen and (max-width: 768px) {
       .card {
         padding: 15px;
@@ -277,43 +281,36 @@
       .shift-table th, 
       .shift-table td {
         padding: 8px;
-        font-size: 13px; /* 14px → 13pxに変更 */
+        font-size: 13px;
       }
       
       .tab {
         width: 110px;
-        font-size: 12px; /* 13px → 12pxに変更 */
+        font-size: 12px;
         padding: 6px 3px;
       }
       
       h1 {
-        font-size: 1.7em; /* 1.8em → 1.7emに変更 */
+        font-size: 1.7em;
       }
       
       h2 {
-        font-size: 1.4em; /* 1.5em → 1.4emに変更 */
+        font-size: 1.4em;
       }
       
       h3 {
-        font-size: 1.1em; /* 1.2em → 1.1emに変更 */
+        font-size: 1.1em;
       }
 
       body {
-        font-size: 14px; /* ベースのフォントサイズを少し小さく */
+        font-size: 14px;
+      }
+      
+      .image-card img {
+        max-height: 160px;
       }
     }
-
-    /* セクション見出しのアンダーバーを一色に */
-    h2 {
-      margin-top: 0;
-      color: #2c3e50;
-      text-align: left;
-      font-size: 1.8em;
-      padding-bottom: 10px;
-      border-bottom: 3px solid #4CAF50; /* 下線を一色に変更 */
-      margin-bottom: 20px;
-      position: relative;
-    }
+  </style>
 </style>
 </head>
 <body>
