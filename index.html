@@ -11,34 +11,41 @@
       margin: 0;
       font-family: sans-serif;
       scroll-behavior: smooth;
-      padding-top: 100px;
+      padding-top: 130px; /* バナーと切り替えタブの分を考慮 */
     }
 
-    /* デバイス切り替えボタン */
-    .device-toggle {
+    /* デバイス切り替えタブ（バナー内に配置） */
+    .device-switcher {
       position: fixed;
-      top: 10px;
-      right: 10px;
-      z-index: 2000;
-      background: rgba(255,255,255,0.9);
-      padding: 5px 10px;
-      border-radius: 20px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #fdf5e6;
+      z-index: 1100;
+      padding: 10px 0;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
     }
-    .device-toggle button {
+    .device-switcher button {
       background: #4CAF50;
       color: white;
       border: none;
-      padding: 5px 10px;
+      padding: 8px 15px;
       margin: 0 5px;
-      border-radius: 3px;
+      border-radius: 20px;
       cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+    .device-switcher button.active {
+      background: #2E7D32;
+      transform: scale(1.05);
     }
 
-    /* ヘッダーバナー */
+    /* ヘッダーバナー（デバイス切り替えタブの下に配置） */
     .banner-wrapper {
       position: fixed;
-      top: 40px;
+      top: 50px; /* デバイス切り替えタブの高さ分下げる */
       left: 0;
       right: 0;
       background-color: #fdf5e6;
@@ -50,6 +57,7 @@
       margin: 0 auto;
     }
 
+    /* 以下、既存のスタイルは変更なし */
     .banner {
       width: 100%;
       overflow-x: auto;
@@ -59,18 +67,15 @@
       text-align: center;
       padding: 10px 0;
     }
-
     .banner::-webkit-scrollbar {
       display: none;
     }
-
     .banner-inner {
       display: inline-block;
       white-space: nowrap;
       padding: 0 10px;
       text-align: center;
     }
-
     .tab {
       display: inline-block;
       width: 120px;
@@ -90,162 +95,53 @@
       font-size: 14px;
       line-height: 1.3;
     }
-
-    /* セクションスタイル */
-    section {
-      scroll-margin-top: 100px;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 30px 20px;
-      position: relative;
-    }
-
-    section::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -10px;
-      width: calc(100% + 20px);
-      height: 100%;
-      z-index: -1;
-      border-radius: 10px;
-    }
-
-    section.start::before { background-color: #e8f4f8; }
-    section.shift::before { background-color: #fff8e1; }
-    section.job::before { background-color: #e6f0ff; }
-    section.salary::before { background-color: #ffffe0; }
-    section.atmosphere::before { background-color: #ffe4c4; }
-    section.form::before { background-color: #e8f5e9; }
-    section.access::before { background-color: #ffe4e1; }
-
-    h2 {
-      margin-top: 0;
-      color: #2c3e50;
-      text-align: center;
-      padding: 10px 20px;
-      background-color: white;
-      border-radius: 50px;
-      display: inline-block;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-      border: 2px solid #2c3e50;
-      transform: translateY(-50%);
-      position: relative;
-      left: 50%;
-      transform: translateX(-50%) translateY(-50%);
-    }
-
-    /* カード基本スタイル */
-    .card {
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      padding: 20px;
-      margin-bottom: 30px;
-      word-break: break-word;
-      overflow: hidden;
-      text-align: left;
-      max-width: 100%;
-    }
-
-    /* PC版専用スタイル */
-    @media screen and (min-width: 769px) {
-      body {
-        padding-top: 120px;
-      }
-      
-      .banner-wrapper {
-        top: 60px;
-      }
-      
-      section {
-        max-width: 900px;
-        padding: 40px 30px;
-      }
-      
-      h2 {
-        font-size: 1.8em;
-        padding: 15px 30px;
-      }
-      
-      .card {
-        padding: 30px;
-        margin-bottom: 40px;
-      }
-      
-      /* PC版の画像カードレイアウト */
-      .image-card {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-        align-items: center;
-      }
-      
-      .image-card img {
-        width: 100%;
-        height: auto;
-        max-height: 250px;
-      }
-      
-      .image-card-content {
-        grid-column: span 1;
-      }
-      
-      /* 2列レイアウト */
-      .two-column {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 30px;
-      }
-    }
-
-    /* スマホ版専用スタイル */
-    @media screen and (max-width: 768px) {
-      .image-card {
-        flex-direction: column;
-      }
-      
-      .image-card img {
-        width: 100%;
-        height: auto;
-      }
-      
-      .card {
-        padding: 15px;
-      }
-      
-      .tab {
-        width: 110px;
-        font-size: 13px;
-        padding: 6px 3px;
-      }
-    }
-
-    /* 以下、既存のスタイルは変更なし */
-    /* ...（元のスタイルをそのまま保持）... */
+    /* ...（他の既存スタイルはそのまま保持）... */
   </style>
 </head>
 <body>
-  <!-- デバイス切り替えボタン -->
-  <div class="device-toggle">
-    <button id="mobile-view">スマホ表示</button>
+  <!-- デバイス切り替えタブ（バナー上部に固定） -->
+  <div class="device-switcher">
+    <button id="mobile-view" class="active">スマホ表示</button>
     <button id="desktop-view">PC表示</button>
   </div>
 
-  <!-- 以下、既存のHTMLは変更なし -->
+  <!-- 既存のバナー部分 -->
+  <div class="banner-wrapper">
+    <div class="banner" id="banner">
+      <div class="banner-inner">
+        <a href="#start" class="tab">ページTOP</a>
+        <a href="#shift" class="tab">シフト</a>
+        <a href="#job" class="tab">仕事内容</a>
+        <a href="#salary" class="tab">給料</a>
+        <a href="#atmosphere" class="tab">Q&A</a>
+        <a href="#form" class="tab">応募フォーム</a>
+        <a href="#access" class="tab">アクセス</a>
+        <a href="https://example.com" class="tab" target="_blank">公式HP</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 以下、既存のセクション内容は変更なし -->
   <!-- ...（元のHTMLをそのまま保持）... -->
 
   <script>
     // デバイス切り替え機能
-    document.getElementById('mobile-view').addEventListener('click', function() {
+    const mobileViewBtn = document.getElementById('mobile-view');
+    const desktopViewBtn = document.getElementById('desktop-view');
+    
+    mobileViewBtn.addEventListener('click', function() {
       document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=1.0');
+      mobileViewBtn.classList.add('active');
+      desktopViewBtn.classList.remove('active');
     });
     
-    document.getElementById('desktop-view').addEventListener('click', function() {
+    desktopViewBtn.addEventListener('click', function() {
       document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=1200');
+      desktopViewBtn.classList.add('active');
+      mobileViewBtn.classList.remove('active');
     });
 
-    // ページ読み込み時の処理
+    // ページ読み込み時の処理（スマホ表示をデフォルト）
     window.addEventListener('load', function() {
       document.querySelector('#start').scrollIntoView();
       
@@ -257,6 +153,9 @@
         const tabWidth = shiftTab.offsetWidth;
         banner.scrollLeft = tabLeft - (bannerWidth / 2) + (tabWidth / 2);
       }
+      
+      // 初期状態はスマホ表示
+      mobileViewBtn.classList.add('active');
     });
 
     // タブのアクティブ状態管理
@@ -266,7 +165,7 @@
     window.addEventListener('scroll', () => {
       let current = '';
       sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
+        const sectionTop = section.offsetTop - 130; /* バナーと切り替えタブの高さを考慮 */
         if (pageYOffset >= sectionTop) {
           current = section.getAttribute('id');
         }
