@@ -11,20 +11,13 @@
       margin: 0;
       font-family: sans-serif;
       scroll-behavior: smooth;
-      padding-top: 70px;
+      padding-top: 70px; /* 元の値に戻す */
     }
 
-    /* コンテンツ中央配置用 */
-    .content-wrapper {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 15px;
-    }
-
-    /* デバイス切り替えボタン */
+    /* デバイス切り替えボタン（startセクション内に左揃え） */
     .device-switcher {
       margin: 15px 0;
-      text-align: left;
+      text-align: left; /* 左揃え */
     }
     .device-switcher button {
       background: #4CAF50;
@@ -47,11 +40,10 @@
       text-align: center;
       margin: 20px auto;
     }
-
-    /* ヘッダーバナー */
+    /* ヘッダーバナー（デバイス切り替えタブの高さ分下げる） */
     .banner-wrapper {
       position: fixed;
-      top: 0;
+      top: 0px; /* デバイス切り替えタブの高さ分下げる */
       left: 0;
       right: 0;
       background-color: #fdf5e6;
@@ -107,7 +99,9 @@
     /* セクションスタイル */
     section {
       scroll-margin-top: 70px;
-      padding: 20px 0;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
     }
 
     section.start { background-color: #e8f4f8; }
@@ -166,15 +160,6 @@
       overflow: hidden;
       text-align: left;
       max-width: 100%;
-    }
-
-    /* PC用中央配置 */
-    @media screen and (min-width: 769px) {
-      .card {
-        margin-left: auto;
-        margin-right: auto;
-        width: 90%;
-      }
     }
 
     /* シフト表スタイル */
@@ -295,14 +280,8 @@
 
     /* スマホ表示時の調整 */
     @media screen and (max-width: 768px) {
-      body {
-        font-size: 15px; /* スマホの文字サイズを少し小さく */
-        line-height: 1.5; /* 行間を調整 */
-      }
-      
       .card {
         padding: 15px;
-        font-size: 0.95em; /* カード内の文字サイズを少し小さく */
       }
       
       .shift-table th, 
@@ -318,19 +297,15 @@
       }
       
       h1 {
-        font-size: 1.7em; /* スマホのタイトルサイズを調整 */
+        font-size: 1.8em;
       }
       
       h2 {
-        font-size: 1.4em;
+        font-size: 1.5em;
       }
       
       h3 {
-        font-size: 1.15em;
-      }
-      
-      .question, .answer {
-        font-size: 0.95em; /* Q&Aの文字サイズ調整 */
+        font-size: 1.2em;
       }
     }
   </style>
@@ -351,283 +326,285 @@
     </div>
   </div>
 
-  <div class="content-wrapper">
-    <section class="start" id="start">
-      <div class="device-switcher">
-        <button id="switch-view">PC版へ</button>
-      </div>
-      <h1>〇〇アルバイト求人</h1>
-      <div class="card">
-        <p>ご覧いただき、ありがとうございます。</p>
-        <p>こちらのサイトは〇〇のアルバイト応募者様向けのページとなっております。</p>
-        <p>ここでは〇〇バイトの仕事内容や職場の雰囲気をより詳しく説明しております。</p>
-        <p>少しでも興味のある方はぜひ応募フォームよりお申込みください。</p>
-        
-        <p class="center-tab"><a href="#form" class="tab">応募フォーム</a></p>
-      </div>
-    </section>
-
-    <section class="shift" id="shift">
-      <h2>シフト</h2>
+ <section class="start" id="start">
+    <div class="device-switcher">
+      <button id="switch-view">PC版へ</button>
+    </div>
+    <h1>〇〇アルバイト求人</h1>
+    <div class="card">
+      <p>ご覧いただき、ありがとうございます。</p>
+      <p>こちらのサイトは〇〇のアルバイト応募者様向けのページとなっております。</p>
+      <p>ここでは〇〇バイトの仕事内容や職場の雰囲気をより詳しく説明しております。</p>
+      <p>少しでも興味のある方はぜひ応募フォームよりお申込みください。</p>
       
-      <div class="card">
-        <h3>勤務時間</h3>
-        <table class="shift-table">
-          <thead>
-            <tr>
-              <th>時間帯</th>
-              <th>開始時間</th>
-              <th>終了時間</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>朝</td>
-              <td>9:00</td>
-              <td>12:00~13:00</td>
-            </tr>
-            <tr>
-              <td>夜</td>
-              <td><p>17:30(5~9月)</p>
-                <p>18:00(その他)</p>
-              </td>
-              <td>22:00~23:00</td>
-            </tr>
-          </tbody>
-        </table>
-          <li>シフトは朝と夜に分かれている</li>
-          <li>夜は時期によって開始時間が異なる</li>
-          <li>途中からの勤務や途中退勤もOK</li>
-        <p>(例)『5/11　夜は18:30〜』のようにシフト提出時にLINEで伝えてください</p>
-      </div>
-      
-      <div class="card image-card">
-        <img src="pictures/シフト提出.jpg" alt="シフト提出">
-        <div class="image-card-content">
-        <h3>シフト提出方法</h3>
-          <p>シフトの提出は月末に翌月分のシフトをLINEで提出していただきます。</p>
-          <ul>
-              <li>LINEの日程調整機能で送る</li>
-              <li><p>朝と夜を分けて提出</p>
-                <p>（片方だけでもOK）</p>
-          </ul>
-        </div>
-      </div>
-    </section>
+      <p class="center-tab"><a href="#form" class="tab">応募フォーム</a></p>
+    </div>
+  </section>
 
-    <section class="job" id="job">
-      <h2>仕事内容</h2>
-      
-      <div class="card image-card">
-        <img src="pictures/シーツ回収.jpg" alt="シーツの回収作業">
-        <div class="image-card-content">
-          <h3>【朝】布団上げ</h3>
-           <p>各部屋の使用済みシーツ・枕カバーを回収します。</p>
-            <ul>
-              <li>端末でお客様の退出状況をチェック</li>
-              <li>空いたらシーツと枕カバーを回収</li>
-              <li>布団を折りたたんでタンスにしまう</li>
-              <li>一人あたり〇〇部屋ほど</li>
-            </ul>
-        </div>
-      </div>
 
-      <div class="card image-card">
-        <img src="pictures/布団敷き.jpg" alt="布団敷き作業">
-        <div class="image-card-content">
-          <h3>【夜】布団敷き</h3>
-          <p>3人1組で各部屋の布団を敷きます。</p>
-          <ul>      
-            <li>お客様が食事のタイミング</li>
-            <li>１組で５０枚ほど</li>
-            <li>慣れてきたら雑談しながら</li>
-          </ul>
-        </div> 
-      </div>
-
-      <div class="card image-card">
-        <img src="pictures/食洗機.jpg" alt="食器洗浄機の操作">
-        <div class="image-card-content">
-          <h3>【朝・夜 共通】洗い場</h3>
-          <p>洗浄機で食器を洗い、それぞれ所定の位置に戻します。</p>
-          <ul>
-            <li>食器を並べて食洗機に</li>
-            <li>出てきた食器を回収して収納場所へ</li>
-            <li>洗った食器を所定の位置にしまう</li>                         
-          </ul>
-        </div>
-      </div>
-
-      <div class="card image-card">
-        <img src="pictures/会場図面.jpg" alt="会場設営図面">
-        <div class="image-card-content">
-          <h3>【朝・夜 共通】会場設営</h3>
-          <p>図面通りに机や椅子、演台などを配置します。</p>
-          <ul>   
-            <li>日によって会場設営がある</li>
-            <li>図面の通りに配置</li>
-            <li>机の高さ調整をして完了</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="salary" id="salary">
-      <h2>給料</h2>
-      
-      <div class="card">
-        <h3>時給について</h3>
+  <section class="shift" id="shift">
+    <h2>シフト</h2>
+    
+    <div class="card">
+      <h3>勤務時間</h3>
+      <table class="shift-table">
+        <thead>
+          <tr>
+            <th>時間帯</th>
+            <th>開始時間</th>
+            <th>終了時間</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>朝</td>
+            <td>9:00</td>
+            <td>12:00~13:00</td>
+          </tr>
+          <tr>
+            <td>夜</td>
+            <td><p>17:30(5~9月)</p>
+              <p>18:00(その他)</p>
+            </td>
+            <td>22:00~23:00</td>
+          </tr>
+        </tbody>
+      </table>
+        <li>シフトは朝と夜に分かれている</li>
+        <li>夜は時期によって開始時間が異なる</li>
+        <li>途中からの勤務や途中退勤もOK</li>
+      <p>(例)『5/11　夜は18:30〜』のようにシフト提出時にLINEで伝えてください</p>
+    </div>
+    
+    <div class="card image-card">
+      <img src="pictures/シフト提出.jpg" alt="シフト提出">
+      <div class="image-card-content">
+      <h3>シフト提出方法</h3>
+        <p>シフトの提出は月末に翌月分のシフトをLINEで提出していただきます。</p>
         <ul>
-          <li>基本時給: 円</li>
-          <li>深夜勤務(22時以降): +25%</li>
-          <li>支払日:　毎月末（20日締め）</li>
+            <li>LINEの日程調整機能で送る</li>
+            <li><p>朝と夜を分けて提出</p>
+              <p>（片方だけでもOK）</p>
         </ul>
       </div>
-      
-      <div class="card image-card">
-        <img src="pictures/賄い.jpg" alt="賄い食事の様子">
-        <div class="image-card-content">
-          <h3>まかない</h3>
-          <p>朝・夜どちらも賄いの提供があります</p>
+    </div>
+  </section>
+
+  <section class="job" id="job">
+    <h2>仕事内容</h2>
+    
+    <div class="card image-card">
+      <img src="pictures/シーツ回収.jpg" alt="シーツの回収作業">
+      <div class="image-card-content">
+        <h3>【朝】布団上げ</h3>
+         <p>各部屋の使用済みシーツ・枕カバーを回収します。</p>
           <ul>
-            <li>バイキングで提供しているもの</li>
-            <li>バイト後にどうぞ</li>
-            <li>量は自由</li>
+            <li>端末でお客様の退出状況をチェック</li>
+            <li>空いたらシーツと枕カバーを回収</li>
+            <li>布団を折りたたんでタンスにしまう</li>
+            <li>一人あたり〇〇部屋ほど</li>
           </ul>
-        </div>
       </div>
-    </section>
+    </div>
 
-    <section class="atmosphere" id="atmosphere">
-      <h2>Q&A</h2>
-      
-      <div class="card qa-card">
-        <div class="question">Q. どんな人が働いていますか？</div>
-        <div class="answer"> <p>A. 現在<span style="color: red;">〇〇の学生</span>が多く活躍しております。</p>
-          <p>同じ学部の方はもちろん、他学部・他大学の方もお待ちしております！</p>
-        </div>
-      </div>
-      <div class="card qa-card">
-        <div class="question">Q. 1日に何人くらい働いていますか？</div>
-        <div class="answer"><p>A.　学生バイトは<span style="color: red;">3〜5人</span>です。</p>
-          <p>加えて社員やパートの方々と一緒に働いております。</p>
-        </div>
-      </div>
-      
-      <div class="card qa-card">
-        <div class="question">Q. シフトの頻度はどのくらいですか？</div>
-        <div class="answer"><p>A. 週に<span style="color: red;">１~３日</span>の方が多いです。</p>
-          <p>多い人だと週に６日間働いたり、土日に朝・夜の両方で働く方もいます。</p>
-          <p>朝と夜があるため履修登録に応じて働き方を変えることができます。</p>
-        </div>
-      </div>
-      
-      <div class="card qa-card">
-        <div class="question">Q. 服装に決まりはありますか？</div>
-        <div class="answer">A. <span style="color: red;">上の服(T-シャツ)を購入</span>していただきます。（２枚で円）</p>
-          <p>ズボンに関しては指定はないですが、派手なものはご遠慮ください。</p>
-        </div>
-      </div>
-        
-      <div class="card qa-card">
-        <div class="question">Q. 通勤手段は？</div>
-        <div class="answer"><p>A. <span style="color: red;">車や自転車</span>の方が多いです。</p>
-          <p>原付・バイクの方用の駐輪場もございます。</p>
-          <p class="center-tab"><a href="#access" class="tab">駐車場</a></p>
-        </div>
-      </div>
-        
-      <div class="card qa-card">
-        <div class="question">Q. 友達と応募しても大丈夫ですか？</div>
-        <div class="answer"><p>A. ぜひ！みなさんお誘いの上<span style="color: red;">代表者一名</span>が応募フォームよりお申込みしてください。</p>
-        </div>
-      </div>
-    </section>
 
-    <section class="form" id="form"> 
-      <h2>応募フォーム</h2>
-      
-      <div class="card" style="text-align: center;">
-        <p>　</p>
-        <p>バイトのお申込みはこちらから↓</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd11-sAh7V1OJ_15l2_tCHFjh-cCd67yH134GS6yGLmKIdq0A/viewform?usp=sf_link" 
-           class="form-button" 
-           target="_blank">
-          応募フォームを開く
-        </a>
-        <p>　</p>
-        <h2 style="text-align: left;">　必要事項</h2>
+    <div class="card image-card">
+      <img src="pictures/布団敷き.jpg" alt="布団敷き作業">
+      <div class="image-card-content">
+        <h3>【夜】布団敷き</h3>
+        <p>3人1組で各部屋の布団を敷きます。</p>
+        <ul>      
+          <li>お客様が食事のタイミング</li>
+          <li>１組で５０枚ほど</li>
+          <li>慣れてきたら雑談しながら</li>
+        </ul>
+      </div> 
+    </div>
+
+    <div class="card image-card">
+      <img src="pictures/食洗機.jpg" alt="食器洗浄機の操作">
+      <div class="image-card-content">
+        <h3>【朝・夜 共通】洗い場</h3>
+        <p>洗浄機で食器を洗い、それぞれ所定の位置に戻します。</p>
         <ul>
-          <li style="text-align: left;">名前</li>
-          <li style="text-align: left;">メールアドレス</li>
-          <li style="text-align: left;">電話番号</li>
-          <li style="text-align: left;">面接希望日(候補日３日以上)</li>
-          <li style="text-align: left;">面接時間は(~)の中からお願いいたします</li>
+          <li>食器を並べて食洗機に</li>
+          <li>出てきた食器を回収して収納場所へ</li>
+          <li>洗った食器を所定の位置にしまう</li>                         
         </ul>
       </div>
-      
-      <div class="card">
-        <h3>お申込が済んだら</h3>
-        <ul>
-          <li>自動で確認メールをお送りします</li>
-          <li>確認メールが届いてお申込み完了</li>
-          <li><p>後日、いただいた希望日の中から面接日をお知らせいたします。</li>
-          <li><p>迷惑フォルダに入る場合があるためご確認ください。</p></li>
+    </div>
+
+
+ 
+    <div class="card image-card">
+      <img src="pictures/会場図面.jpg" alt="会場設営図面">
+      <div class="image-card-content">
+        <h3>【朝・夜 共通】会場設営</h3>
+        <p>図面通りに机や椅子、演台などを配置します。</p>
+        <ul>   
+          <li>日によって会場設営がある</li>
+          <li>図面の通りに配置</li>
+          <li>机の高さ調整をして完了</li>
         </ul>
       </div>
+    </div>
+  </section>
+
+  <section class="salary" id="salary">
+    <h2>給料</h2>
+    
+    <div class="card">
+      <h3>時給について</h3>
+      <ul>
+        <li>基本時給: 円</li>
+        <li>深夜勤務(22時以降): +25%</li>
+        <li>支払日:　毎月末（20日締め）</li>
+      </ul>
+    </div>
+    
+    <div class="card image-card">
+      <img src="pictures/賄い.jpg" alt="賄い食事の様子">
+      <div class="image-card-content">
+        <h3>まかない</h3>
+        <p>朝・夜どちらも賄いの提供があります</p>
+        <ul>
+          <li>バイキングで提供しているもの</li>
+          <li>バイト後にどうぞ</li>
+          <li>量は自由</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="atmosphere" id="atmosphere">
+    <h2>Q&A</h2>
+    
+    <div class="card qa-card">
+      <div class="question">Q. どんな人が働いていますか？</div>
+      <div class="answer"> <p>A. 現在<span style="color: red;">〇〇の学生</span>が多く活躍しております。</p>
+        <p>同じ学部の方はもちろん、他学部・他大学の方もお待ちしております！</p>
+      </div>
+    </div>
+    <div class="card qa-card">
+      <div class="question">Q. 1日に何人くらい働いていますか？</div>
+      <div class="answer"><p>A.　学生バイトは<span style="color: red;">3〜5人</span>です。</p>
+        <p>加えて社員やパートの方々と一緒に働いております。</p>
+      </div>
+    </div>
+    
+    <div class="card qa-card">
+      <div class="question">Q. シフトの頻度はどのくらいですか？</div>
+      <div class="answer"><p>A. 週に<span style="color: red;">１~３日</span>の方が多いです。</p>
+        <p>多い人だと週に６日間働いたり、土日に朝・夜の両方で働く方もいます。</p>
+        <p>朝と夜があるため履修登録に応じて働き方を変えることができます。</p>
+      </div>
+    </div>
+    
+    <div class="card qa-card">
+      <div class="question">Q. 服装に決まりはありますか？</div>
+      <div class="answer">A. <span style="color: red;">上の服(T-シャツ)を購入</span>していただきます。（２枚で円）</p>
+        <p>ズボンに関しては指定はないですが、派手なものはご遠慮ください。</p>
+      </div>
+    </div>
       
-      <div class="card">
-        <h3>面接当日の流れ</h3>
-        <p>面接時には『履歴書（写真貼付）』</p>
-        <p>をお持ちください</p>
-        <p>駐車場に関しては下記をご参照ください</p>
+    <div class="card qa-card">
+      <div class="question">Q. 通勤手段は？</div>
+      <div class="answer"><p>A. <span style="color: red;">車や自転車</span>の方が多いです。</p>
+        <p>原付・バイクの方用の駐輪場もございます。</p>
         <p class="center-tab"><a href="#access" class="tab">駐車場</a></p>
-        <p>　</p>
-        <h2>　面接内容(15分程度)</h2>
+      </div>
+    </div>
+      
+    <div class="card qa-card">
+      <div class="question">Q. 友達と応募しても大丈夫ですか？</div>
+      <div class="answer"><p>A. ぜひ！みなさんお誘いの上<span style="color: red;">代表者一名</span>が応募フォームよりお申込みしてください。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="form" id="form"> 
+    <h2>応募フォーム</h2>
+    
+    <div class="card" style="text-align: center;">
+      <p>　</p>
+      <p>バイトのお申込みはこちらから↓</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSd11-sAh7V1OJ_15l2_tCHFjh-cCd67yH134GS6yGLmKIdq0A/viewform?usp=sf_link" 
+         class="form-button" 
+         target="_blank">
+        応募フォームを開く
+      </a>
+      <p>　</p>
+      <h2 style="text-align: left;">　必要事項</h2>
+      <ul>
+        <li style="text-align: left;">名前</li>
+        <li style="text-align: left;">メールアドレス</li>
+        <li style="text-align: left;">電話番号</li>
+        <li style="text-align: left;">面接希望日(候補日３日以上)</li>
+        <li style="text-align: left;">面接時間は(~)の中からお願いいたします</li>
+      </ul>
+    </div>
+    
+    <div class="card">
+      <h3>お申込が済んだら</h3>
+      <ul>
+        <li>自動で確認メールをお送りします</li>
+        <li>確認メールが届いてお申込み完了</li>
+        <li><p>後日、いただいた希望日の中から面接日をお知らせいたします。</li>
+        <li><p>迷惑フォルダに入る場合があるためご確認ください。</p></li>
+      </ul>
+    </div>
+    
+    <div class="card">
+      <h3>面接当日の流れ</h3>
+      <p>面接時には『履歴書（写真貼付）』</p>
+      <p>をお持ちください</p>
+      <p>駐車場に関しては下記をご参照ください</p>
+      <p class="center-tab"><a href="#access" class="tab">駐車場</a></p>
+      <p>　</p>
+      <h2>　面接内容(15分程度)</h2>
+      <ul>
+        <li>履歴書の確認</li>
+        <li>出勤予定日数の確認</li>
+        <li>通勤手段と時間の確認</li>
+        <li>勤務内容の説明</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="access" id="access">
+    <h2>アクセス</h2>
+    
+    <div class="card map-card">
+      <h3>○○施設</h3>
+      <p>〒　住所</p>
+      <p>TEL: 電話番号</p>
+      <a href="https://goo.gl/maps/..." class="map-link" target="_blank">
+        Googleマップで確認する
+      </a>
+    </div>
+    
+    <div class="card image-card">
+      <img src="pictures/自転車駐車場.jpg" alt="自転車駐輪場">
+      <div class="image-card-content">
+        <h3>自転車・原付・バイクでお越しの方</h3>
+        <p>　専用の駐輪場をご利用いただけます</p>
         <ul>
-          <li>履歴書の確認</li>
-          <li>出勤予定日数の確認</li>
-          <li>通勤手段と時間の確認</li>
-          <li>勤務内容の説明</li>
+          <li>ここに目印となる文章を書く</li>
         </ul>
       </div>
-    </section>
-
-    <section class="access" id="access">
-      <h2>アクセス</h2>
-      
-      <div class="card map-card">
-        <h3>○○施設</h3>
-        <p>〒　住所</p>
-        <p>TEL: 電話番号</p>
-        <a href="https://goo.gl/maps/..." class="map-link" target="_blank">
-          Googleマップで確認する
-        </a>
+    </div>
+    
+    <div class="card image-card">
+      <img src="pictures/車駐車場.jpg" alt="車用駐車場">
+      <div class="image-card-content">
+        <h3>車でお越しの方</h3>
+        <p>　専用の駐車場を利用できます。</p>
+        <ul>
+          <li>ここに目印となる文章を書く</li>
+        </ul>
       </div>
-      
-      <div class="card image-card">
-        <img src="pictures/自転車駐車場.jpg" alt="自転車駐輪場">
-        <div class="image-card-content">
-          <h3>自転車・原付・バイクでお越しの方</h3>
-          <p>　専用の駐輪場をご利用いただけます</p>
-          <ul>
-            <li>ここに目印となる文章を書く</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="card image-card">
-        <img src="pictures/車駐車場.jpg" alt="車用駐車場">
-        <div class="image-card-content">
-          <h3>車でお越しの方</h3>
-          <p>　専用の駐車場を利用できます。</p>
-          <ul>
-            <li>ここに目印となる文章を書く</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-  </div>
+    </div>
+  </section>
 
   <script>
     // デバイス切り替え機能
