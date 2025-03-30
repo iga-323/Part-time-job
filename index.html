@@ -4,59 +4,81 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>バイト情報ページ</title>
+  <title>〇〇旅館バイト求人 | 和風旅館で働きませんか？</title>
+  <meta name="description" content="〇〇旅館のバイト求人情報。仕事内容、給与、シフトなど詳細をご確認いただけます。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&family=Kosugi+Maru&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary-color: #8B4513;
+      --secondary-color: #A52A2A;
+      --accent-color: #DAA520;
+      --dark-color: #3E2723;
+      --light-color: #FFF8F0;
+      --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
     /* 基本設定 */
     body {
-      background-color: #B0E0E6;
+      background-color: #FFF8F0;
       margin: 0;
-      font-family: sans-serif;
+      font-family: 'Noto Serif JP', serif;
       scroll-behavior: smooth;
-      padding-top: 70px;
+      padding-top: 80px;
+      color: #333;
+      line-height: 1.7;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" opacity="0.05"><path d="M30,10 Q50,0 70,10 T90,30 Q100,50 90,70 T70,90 Q50,100 30,90 T10,70 Q0,50 10,30 T30,10" fill="%238B4513"/></svg>');
+      background-size: 100px;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     /* デバイス切り替えボタン */
     .device-switcher {
-      margin: 15px 0;
+      margin: 20px 0;
       text-align: left;
     }
 
     .device-switcher button {
-      background: #4CAF50;
+      background: linear-gradient(135deg, var(--secondary-color), #8B0000);
       color: white;
       border: none;
-      padding: 8px 15px;
+      padding: 10px 20px;
       margin-right: 10px;
-      border-radius: 20px;
+      border-radius: 30px;
       cursor: pointer;
       font-weight: bold;
-      transition: all 0.3s;
+      transition: var(--transition);
+      box-shadow: 0 2px 10px rgba(165, 42, 42, 0.3);
+      font-family: 'Kosugi Maru', sans-serif;
+    }
+
+    .device-switcher button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(165, 42, 42, 0.4);
     }
 
     .device-switcher button.active {
-      background: #2E7D32;
-    }
-
-    /* 中央配置のタブスタイル */
-    .center-tab {
-      display: block;
-      text-align: center;
-      margin: 20px auto;
+      background: linear-gradient(135deg, #8B0000, #5D0000);
     }
 
     /* ヘッダーバナー */
     .banner-wrapper {
       position: fixed;
-      top: 0px;
+      top: 0;
       left: 0;
       right: 0;
-      background-color: #fdf5e6;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      background: linear-gradient(90deg, #5D0000 0%, var(--secondary-color) 55%, #8B4513 100%);
+      box-shadow: var(--shadow);
       z-index: 1000;
-      border-radius: 8px;
       overflow: hidden;
-      max-width: 1200px;
-      margin: 0 auto;
+      width: 100%;
+      backdrop-filter: blur(5px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .banner {
@@ -65,8 +87,7 @@
       -webkit-overflow-scrolling: touch;
       white-space: nowrap;
       scrollbar-width: none;
-      text-align: center;
-      padding: 10px 0;
+      padding: 12px 0;
     }
 
     .banner::-webkit-scrollbar {
@@ -74,171 +95,286 @@
     }
 
     .banner-inner {
-      display: inline-block;
-      white-space: nowrap;
-      padding: 0 10px;
-      text-align: center;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 20px;
     }
 
     .tab {
-      display: inline-block;
-      width: 120px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 120px;
+      height: 40px;
       text-align: center;
-      background-color: #F08080;
-      border: 3px solid #333;
-      padding: 8px 5px;
-      border-radius: 5px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border: none;
+      padding: 0 15px;
+      border-radius: 20px;
       text-decoration: none;
       color: white;
-      font-weight: bold;
-      white-space: normal;
-      word-break: keep-all;
-      transition: transform 0.2s, background-color 0.2s;
-      margin: 0 10px;
-      box-sizing: border-box;
-      font-size: 14px;
-      line-height: 1.3;
+      font-weight: 500;
+      margin: 0 8px;
+      transition: var(--transition);
+      backdrop-filter: blur(5px);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      font-family: 'Kosugi Maru', sans-serif;
+    }
+
+    .tab:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .tab.active {
+      background-color: white;
+      color: var(--secondary-color);
+      font-weight: 700;
     }
 
     /* セクションスタイル */
     section {
-      scroll-margin-top: 70px;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 20px;
+      scroll-margin-top: 80px;
+      max-width: 1200px;
+      margin: 0 auto 30px;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+      background-color: white;
+      border: 1px solid rgba(139, 69, 19, 0.1);
+    }
+
+    section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
     }
 
     section.start {
-      background-color: #e8f4f8;
+      background: linear-gradient(135deg, #FFF8F0, #FFF0E0);
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" opacity="0.05"><path d="M30,10 Q50,0 70,10 T90,30 Q100,50 90,70 T70,90 Q50,100 30,90 T10,70 Q0,50 10,30 T30,10" fill="%238B4513"/></svg>'), linear-gradient(135deg, #FFF8F0, #FFF0E0);
+      background-size: 100px;
     }
 
     section.shift {
-      background-color: #fff8e1;
+      background: linear-gradient(135deg, #FFF8E8, #FFE8D8);
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" opacity="0.05"><path d="M30,10 Q50,0 70,10 T90,30 Q100,50 90,70 T70,90 Q50,100 30,90 T10,70 Q0,50 10,30 T30,10" fill="%238B4513"/></svg>'), linear-gradient(135deg, #FFF8E8, #FFE8D8);
+      background-size: 100px;
     }
 
     section.job {
-      background-color: #e6f0ff;
+      background: linear-gradient(135deg, #F8F0E8, #F0E0D8);
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" opacity="0.05"><path d="M30,10 Q50,0 70,10 T90,30 Q100,50 90,70 T70,90 Q50,100 30,90 T10,70 Q0,50 10,30 T30,10" fill="%238B4513"/></svg>'), linear-gradient(135deg, #F8F0E8, #F0E0D8);
+      background-size: 100px;
     }
 
     section.salary {
-      background-color: #ffffe0;
+      background: linear-gradient(135deg, #FFF0E0, #FFE8D0);
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" opacity="0.05"><path d="M30,10 Q50,0 70,10 T90,30 Q100,50 90,70 T70,90 Q50,100 30,90 T10,70 Q0,50 10,30 T30,10" fill="%238B4513"/></svg>'), linear-gradient(135deg, #FFF0E0, #FFE8D0);
+      background-size: 100px;
     }
 
     section.atmosphere {
-      background-color: #ffe4c4;
+      background: linear-gradient(135deg, #FFE8D8, #FFE0C8);
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" opacity="0.05"><path d="M30,10 Q50,0 70,10 T90,30 Q100,50 90,70 T70,90 Q50,100 30,90 T10,70 Q0,50 10,30 T30,10" fill="%238B4513"/></svg>'), linear-gradient(135deg, #FFE8D8, #FFE0C8);
+      background-size: 100px;
     }
 
     section.form {
-      background-color: #e8f5e9;
+      background: linear-gradient(135deg, #F0F8F0, #E0F0E0);
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" opacity="0.05"><path d="M30,10 Q50,0 70,10 T90,30 Q100,50 90,70 T70,90 Q50,100 30,90 T10,70 Q0,50 10,30 T30,10" fill="%238B4513"/></svg>'), linear-gradient(135deg, #F0F8F0, #E0F0E0);
+      background-size: 100px;
     }
 
     section.access {
-      background-color: #ffe4e1;
+      background: linear-gradient(135deg, #FFE8E0, #FFE0D8);
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" opacity="0.05"><path d="M30,10 Q50,0 70,10 T90,30 Q100,50 90,70 T70,90 Q50,100 30,90 T10,70 Q0,50 10,30 T30,10" fill="%238B4513"/></svg>'), linear-gradient(135deg, #FFE8E0, #FFE0D8);
+      background-size: 100px;
     }
 
     h1 {
-      color: #2c3e50;
+      color: var(--dark-color);
       text-align: center;
-      margin-bottom: 20px;
-      font-size: 2.2em;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+      font-size: 2.5em;
+      font-weight: 700;
+      position: relative;
+      padding-bottom: 15px;
+      font-family: 'Kosugi Maru', sans-serif;
+    }
+
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      border-radius: 2px;
     }
 
     h2 {
+      color: var(--dark-color);
+      font-size: 2em;
       margin-top: 0;
-      color: #2c3e50;
-      text-align: left;
-      font-size: 1.8em;
-      padding-bottom: 10px;
-      border-bottom: 3px solid #4CAF50;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       position: relative;
+      padding-left: 15px;
+      font-family: 'Kosugi Maru', sans-serif;
+    }
+
+    h2::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 5px;
+      background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+      border-radius: 3px;
     }
 
     h3 {
-      color: #2c3e50;
-      font-size: 1.4em;
+      color: var(--dark-color);
+      font-size: 1.5em;
       margin-top: 0;
-      padding-bottom: 5px;
-      border-bottom: 2px dashed #ddd;
+      margin-bottom: 15px;
+      position: relative;
+      padding-bottom: 8px;
+      font-family: 'Kosugi Maru', sans-serif;
+    }
+
+    h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-color), rgba(218, 165, 32, 0.3));
+      border-radius: 3px;
     }
 
     /* カード基本スタイル */
     .card {
       background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      padding: 10px;
-      margin-bottom: 20px;
-      word-break: break-word;
-      overflow: hidden;
-      text-align: left;
-      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      padding: 20px;
+      margin-bottom: 25px;
+      transition: var(--transition);
+      border: 1px solid rgba(139, 69, 19, 0.1);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     }
 
     /* シフト表スタイル */
     .shift-table {
       width: 100%;
       border-collapse: collapse;
-      margin: 15px 0;
+      margin: 20px 0;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     }
 
     .shift-table th,
     .shift-table td {
-      border: 1px solid #ddd;
-      padding: 10px;
+      border: 1px solid #e0e0e0;
+      padding: 12px;
       text-align: center;
+      transition: var(--transition);
     }
 
     .shift-table th {
-      background-color: #f2f2f2;
-      font-weight: bold;
+      background-color: #f5f5f5;
+      font-weight: 600;
+      color: var(--dark-color);
+      font-family: 'Kosugi Maru', sans-serif;
+    }
+
+    .shift-table tr:hover td {
+      background-color: #f9f9f9;
     }
 
     /* Googleマップカード */
     .map-card {
       text-align: center;
-      padding: 25px 20px;
+      padding: 30px;
       background-color: #f8f9fa;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
     }
 
     .map-link {
-      display: inline-block;
-      padding: 12px 20px;
-      background-color: #4285F4;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 25px;
+      background: linear-gradient(135deg, #8B4513, #A52A2A);
       color: white;
-      border-radius: 4px;
+      border-radius: 30px;
       text-decoration: none;
-      margin-top: 15px;
-      font-weight: bold;
-      transition: background-color 0.3s;
+      margin-top: 20px;
+      font-weight: 600;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+      font-family: 'Kosugi Maru', sans-serif;
     }
 
     .map-link:hover {
-      background-color: #3367d6;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4);
     }
 
-    /* 画像付きカード - スマホ用 */
+    .map-link i {
+      margin-right: 8px;
+      font-size: 1.2em;
+    }
+
+    /* 画像付きカード */
     .image-card {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 20px;
+      gap: 25px;
+      transition: var(--transition);
+    }
+
+    .image-card:hover {
+      transform: translateY(-5px);
     }
 
     .image-card img {
       width: 100%;
       height: auto;
-      max-height: 180px;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      max-height: 250px;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
       object-fit: cover;
-      transition: transform 0.3s ease;
+      transition: var(--transition);
       cursor: pointer;
+      border: 1px solid rgba(139, 69, 19, 0.2);
     }
 
     .image-card img:hover {
       transform: scale(1.02);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     }
 
     .image-card-content {
@@ -248,241 +384,361 @@
 
     /* Q&Aスタイル */
     .qa-card {
-      border-left: 4px solid #4CAF50;
+      border-left: 4px solid var(--secondary-color);
+      padding-left: 15px;
+      margin-bottom: 20px;
+      transition: var(--transition);
+    }
+
+    .qa-card:hover {
+      transform: translateX(5px);
     }
 
     .question {
-      font-weight: bold;
-      color: #2c3e50;
-      margin-bottom: 5px;
+      font-weight: 700;
+      color: var(--dark-color);
+      margin-bottom: 8px;
       font-size: 1.1em;
+      position: relative;
+      padding-left: 15px;
+    }
+
+    .question::before {
+      content: 'Q.';
+      position: absolute;
+      left: 0;
+      color: var(--primary-color);
+      font-weight: 800;
     }
 
     .answer {
       margin-left: 15px;
-      padding-left: 10px;
-      border-left: 2px solid #ddd;
+      padding-left: 15px;
+      border-left: 2px solid #e0e0e0;
+      position: relative;
+    }
+
+    .answer::before {
+      content: 'A.';
+      position: absolute;
+      left: 0;
+      color: var(--secondary-color);
+      font-weight: 800;
+    }
+
+    /* リンクボタンスタイル */
+    .link-button {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: var(--accent-color);
+      color: var(--dark-color);
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 5px 0;
+      transition: var(--transition);
+      box-shadow: 0 2px 5px rgba(218, 165, 32, 0.3);
+      font-family: 'Kosugi Maru', sans-serif;
+    }
+
+    .link-button:hover {
+      background-color: #E6B800;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(218, 165, 32, 0.4);
     }
 
     /* ボタンスタイル */
     .form-button {
-      display: inline-block;
-      padding: 12px 24px;
-      background-color: #4CAF50;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 30px;
+      background: linear-gradient(135deg, var(--secondary-color), #8B0000);
       color: white;
       border: none;
-      border-radius: 4px;
-      font-size: 16px;
+      border-radius: 30px;
+      font-size: 1.1em;
+      font-weight: 600;
       cursor: pointer;
-      transition: background-color 0.3s;
+      transition: var(--transition);
       text-decoration: none;
-      margin: 10px 0;
+      margin: 15px 0;
+      box-shadow: 0 4px 15px rgba(165, 42, 42, 0.3);
+      font-family: 'Kosugi Maru', sans-serif;
     }
 
     .form-button:hover {
-      background-color: #45a049;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(165, 42, 42, 0.4);
+      background: linear-gradient(135deg, #8B0000, #5D0000);
     }
 
-    /* PC用レイアウト */
-    @media screen and (min-width: 769px) {
-      .image-card {
-        flex-direction: row;
-        align-items: flex-start;
-        gap: 25px;
-      }
-
-      /*PC_imafge*/
-      .image-card img {
-        width: 300px;
-        height: 220px;
-        max-height: none;
-      }
-
-      .image-card-content {
-        padding-left: 25px;
-      }
-
-      /* カードの幅のみ小さく */
-      .card {
-        max-width: 90%;
-        margin-left: auto;
-        margin-right: auto;
-      }
-    }
-
-    /* スマホ表示時の調整 */
-    @media screen and (max-width: 768px) {
-      .card {
-        padding: 10px;
-        /* 少しコンパクトに */
-      }
-
-      .shift-table th,
-      .shift-table td {
-        padding: 6px;
-        font-size: 13px;
-        /* 小さめに */
-      }
-
-      .tab {
-        width: 100px;
-        /* 横幅も少し狭く */
-        font-size: 12px;
-        padding: 5px 3px;
-      }
-
-      h1 {
-        font-size: 1.6em;
-        /* 全体に小さめに */
-      }
-
-      h2 {
-        font-size: 1.3em;
-      }
-
-      h3 {
-        font-size: 1.1em;
-      }
-
-      body {
-        font-size: 14px;
-        /* ベースも少し下げる */
-      }
-
-      .image-card img {
-        max-height: 200px;
-      }
+    .form-button i {
+      margin-right: 10px;
+      font-size: 1.2em;
     }
 
     /* モーダルスタイル */
     .modal {
       display: none;
       position: fixed;
-      z-index: 2000;
+      z-index: 9999;
       left: 0;
       top: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.9);
+      background-color: rgba(0, 0, 0, 0.95);
       overflow: auto;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal.show {
+      opacity: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     .modal-content {
-      margin: auto;
-      display: block;
-      width: 90%;
-      max-width: 800px;
-      max-height: 90vh;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      max-width: 90%;
+      max-height: 80vh;
+      animation: zoomIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border-radius: 8px;
+      box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+      border: 2px solid rgba(255, 255, 255, 0.1);
     }
 
-    .modal-content,
-    #caption {
-      animation-name: zoom;
-      animation-duration: 0.6s;
-    }
-
-    @keyframes zoom {
+    @keyframes zoomIn {
       from {
-        transform: translate(-50%, -50%) scale(0.1)
+        transform: scale(0.8);
+        opacity: 0;
       }
-
       to {
-        transform: translate(-50%, -50%) scale(1)
+        transform: scale(1);
+        opacity: 1;
       }
     }
 
     .close {
       position: absolute;
-      top: 10px;
-      /* 上端からの距離を短く */
-      right: 10px;
-      /* 画像の右端に近づける */
-      color: #f1f1f1;
-      font-size: 30px;
-      /* 少し小さめにしてスマホでも押しやすく */
+      top: 30px;
+      right: 30px;
+      color: white;
+      font-size: 40px;
       font-weight: bold;
-      background-color: rgba(0, 0, 0, 0.5);
-      /* 背景をつけて視認性UP */
-      padding: 6px 12px;
-      border-radius: 4px;
-      transition: 0.3s;
+      transition: var(--transition);
       cursor: pointer;
-      z-index: 10;
+      background-color: rgba(0, 0, 0, 0.5);
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 2px solid white;
     }
 
-    .close:hover,
-    .close:focus {
-      background-color: rgba(0, 0, 0, 0.8);
-      color: #fff;
+    .close:hover {
+      transform: rotate(90deg);
+      background-color: var(--primary-color);
     }
 
-    /* キャプション */
     #caption {
       color: white;
       text-align: center;
-      margin-top: 15px;
+      margin-top: 20px;
       font-size: 1.2em;
+      padding: 0 20px;
+      max-width: 80%;
     }
 
-    @media only screen and (max-width: 768px) {
-      .modal-content {
-        width: 95%;
+    /* ローダー */
+    .loader {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9998;
+    }
+
+    .loader-spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: var(--primary-color);
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* PC用レイアウト */
+    @media screen and (min-width: 769px) {
+      .banner-inner {
+        justify-content: center;
+      }
+
+      .image-card {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 30px;
+      }
+
+      .image-card img {
+        width: 350px;
+        height: 250px;
+        max-height: none;
+      }
+
+      .image-card-content {
+        padding-left: 20px;
+      }
+
+      .card {
+        max-width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      section {
+        padding: 40px;
+      }
+    }
+
+    /* スマホ表示時の調整 */
+    @media screen and (max-width: 768px) {
+      body {
+        padding-top: 70px;
+        font-size: 15px;
+      }
+
+      .tab {
+        min-width: 100px;
+        height: 36px;
+        font-size: 13px;
+        padding: 0 12px;
+        margin: 0 5px;
+      }
+
+      h1 {
+        font-size: 1.8em;
+      }
+
+      h2 {
+        font-size: 1.5em;
+      }
+
+      h3 {
+        font-size: 1.3em;
+      }
+
+      section {
+        padding: 25px;
+        margin-bottom: 20px;
       }
 
       .close {
+        top: 20px;
+        right: 20px;
         font-size: 30px;
-        top: 150px;
-        right: 8px;
-        padding: 4px 10px;
+        width: 40px;
+        height: 40px;
+      }
+
+      .modal-content {
+        max-width: 95%;
+      }
+
+      #caption {
+        font-size: 1em;
+        max-width: 95%;
       }
     }
+
+    /* スクロールバー */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(var(--primary-color), var(--secondary-color));
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(#6B2D00, #8B0000);
+    }
+
+    /* 改行防止 */
+    .nowrap {
+      white-space: nowrap;
+    }
+
+    /* 強調テキスト */
+    .highlight {
+      color: var(--secondary-color);
+      font-weight: 600;
+    }
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
 
+  <!-- モーダルダイアログ -->
   <div id="imageModal" class="modal">
     <span class="close">&times;</span>
     <img class="modal-content" id="expandedImage">
     <div id="caption"></div>
   </div>
-  <div class="loader"></div>
+  <div class="loader">
+    <div class="loader-spinner"></div>
+  </div>
 
+  <!-- ヘッダーナビゲーション -->
   <div class="banner-wrapper">
     <div class="banner" id="banner">
       <div class="banner-inner">
-        <a href="#start" class="tab">ページTOP</a>
-        <a href="#shift" class="tab">シフト</a>
-        <a href="#job" class="tab">仕事内容</a>
-        <a href="#salary" class="tab">給料</a>
-        <a href="#atmosphere" class="tab">Q&A</a>
-        <a href="#form" class="tab">応募フォーム</a>
-        <a href="#access" class="tab">アクセス</a>
-        <a href="https://example.com" class="tab" target="_blank">公式HP</a>
+        <a href="#start" class="tab"><i class="fas fa-home"></i> ページTOP</a>
+        <a href="#shift" class="tab"><i class="fas fa-calendar-alt"></i> シフト</a>
+        <a href="#job" class="tab"><i class="fas fa-briefcase"></i> 仕事内容</a>
+        <a href="#salary" class="tab"><i class="fas fa-yen-sign"></i> 給料</a>
+        <a href="#atmosphere" class="tab"><i class="fas fa-question-circle"></i> Q&A</a>
+        <a href="#form" class="tab"><i class="fas fa-edit"></i> 応募フォーム</a>
+        <a href="#access" class="tab"><i class="fas fa-map-marker-alt"></i> アクセス</a>
+        <a href="https://example.com" class="tab" target="_blank"><i class="fas fa-globe"></i> 公式HP</a>
       </div>
     </div>
   </div>
+
+  <!-- メインコンテンツ -->
   <section class="start" id="start">
     <div class="device-switcher">
-      <button id="switch-view">PC版へ</button>
+      <button id="switch-view"><i class="fas fa-desktop"></i> PC版へ</button>
     </div>
-    <h1>〇〇バイト求人</h1>
-    <p>ver４.3</p>
+    <h1><i class="fas fa-umbrella-beach" style="color: var(--accent-color);"></i> 〇〇旅館バイト求人</h1>
     <div class="card">
       <p>ご覧いただき、ありがとうございます。</p>
-      <p>こちらのサイトは〇〇バイトの応募者様向けのページとなっております。</p>
+      <p>こちらのサイトは〇〇旅館の応募者様向けのページとなっております。</p>
       <p>ここでは仕事内容や職場の雰囲気をより詳しく説明しております。</p>
-      <p>少しでも興味のある方はぜひ！<a href="#form" class="tab">応募フォーム</a>よりお申込みください。</p>
+      <p>少しでも興味のある方はぜひ！<a href="#form" class="link-button">応募フォームはこちら</a>よりお申込みください。</p>
     </div>
   </section>
 
-
   <section class="shift" id="shift">
-    <h2>シフト</h2>
+    <h2><i class="fas fa-calendar-alt"></i> シフト</h2>
 
     <div class="card">
       <h3>勤務時間</h3>
@@ -503,43 +759,44 @@
           <tr>
             <td>夜</td>
             <td>
-              <p>17:30(5~9月)</p>
-              <p>18:00(その他)</p>
+              <p>17:30<span class="nowrap">(5~9月)</span></p>
+              <p>18:00<span class="nowrap">(その他)</span></p>
             </td>
             <td>22:00~23:00</td>
           </tr>
         </tbody>
       </table>
-      <li>シフトは朝と夜に分かれております</li>
-      <li>夜は時期によって開始時間が異なります</li>
-      <li>途中からの勤務や途中退勤もOK</li>
+      <ul>
+        <li>シフトは朝と夜に分かれております</li>
+        <li>夜は時期によって開始時間が異なります</li>
+        <li>途中からの勤務や途中退勤もOK</li>
+      </ul>
       <p>(例)</p>
       <p>『5/11　夜は18:30〜』</p>
       <p>のようにシフト提出時にLINEで伝えてください</p>
     </div>
 
     <div class="card image-card">
-      <img src="pictures/シフト提出.png" alt="シフト提出">
+      <img src="pictures/シフト提出.png" alt="シフト提出画面のスクリーンショット">
       <div class="image-card-content">
         <h3>シフト提出方法</h3>
         <p>月末に翌月分のシフトを提出していただきます。</p>
         <ul>
           <li>LINEの日程調整機能で送ります。</li>
-          <li>
-            <p>朝と夜を分けて提出（片方だけでもOK）</p>
+          <li>朝と夜を分けて提出（片方だけでもOK）</li>
         </ul>
       </div>
     </div>
   </section>
 
   <section class="job" id="job">
-    <h2>仕事内容</h2>
+    <h2><i class="fas fa-briefcase"></i> 仕事内容</h2>
 
     <div class="card image-card">
-      <img src="pictures/布団上げ.jpg" alt="布団上げ">
+      <img src="pictures/布団上げ.jpg" alt="布団上げ作業の様子">
       <div class="image-card-content">
         <h3>【朝】布団上げ</h3>
-        <p>　各部屋のシーツ・枕カバーを回収します。</p>
+        <p>各部屋の<span class="nowrap">シーツ・枕カバー</span>を回収します。</p>
         <ul>
           <li>端末でお客様の退出状況をチェック</li>
           <li>空いたらシーツと枕カバーを回収</li>
@@ -549,12 +806,11 @@
       </div>
     </div>
 
-
     <div class="card image-card">
-      <img src="pictures/布団敷き.jpg" alt="布団敷き">
+      <img src="pictures/布団敷き.jpg" alt="布団敷き作業の様子">
       <div class="image-card-content">
         <h3>【夜】布団敷き</h3>
-        <p>　3人1組で各部屋の布団を敷きます。</p>
+        <p>3人1組で各部屋の布団を敷きます。</p>
         <ul>
           <li>お客様が食事のタイミングに行う</li>
           <li>１組あたり５０枚ほど</li>
@@ -564,10 +820,10 @@
     </div>
 
     <div class="card image-card">
-      <img src="pictures/食洗機.jpg" alt="食洗機">
+      <img src="pictures/食洗機.jpg" alt="食器洗浄機の操作風景">
       <div class="image-card-content">
         <h3>【朝・夜 共通】洗い場</h3>
-        <p>　洗浄機で食器を洗い、所定の位置に戻します。</p>
+        <p>洗浄機で食器を洗い、所定の位置に戻します。</p>
         <ul>
           <li>食器を並べて食洗機に入れる</li>
           <li>食器を回収して収納場所へ</li>
@@ -576,12 +832,11 @@
       </div>
     </div>
 
-
     <div class="card image-card">
-      <img src="pictures/会場.jpg" alt="会場設営">
+      <img src="pictures/会場.jpg" alt="会場設営作業の様子">
       <div class="image-card-content">
         <h3>【朝・夜 共通】会場設営</h3>
-        <p>　図面通りに机や椅子、演台などを配置します。</p>
+        <p>図面通りに机や椅子、演台などを配置します。</p>
         <ul>
           <li>日によって会場設営がある</li>
           <li>図面の通りに配置</li>
@@ -592,22 +847,22 @@
   </section>
 
   <section class="salary" id="salary">
-    <h2>給料</h2>
+    <h2><i class="fas fa-yen-sign"></i> 給料</h2>
 
     <div class="card">
-      <h3>　時給について</h3>
+      <h3>時給について</h3>
       <ul>
-        <li>基本時給: 円</li>
+        <li>基本時給: 〇〇円</li>
         <li>深夜勤務(22時以降): +25%</li>
-        <li>支払日:　毎月末（20日締め）</li>
+        <li>支払日: 毎月末（20日締め）</li>
       </ul>
     </div>
 
     <div class="card image-card">
-      <img src="pictures/賄い.jpg" alt="賄い">
+      <img src="pictures/賄い.jpg" alt="賄い食事の様子">
       <div class="image-card-content">
-        <h3>　まかない</h3>
-        <p>　朝・夜どちらも賄いの提供があります</p>
+        <h3>まかない</h3>
+        <p>朝・夜どちらも賄いの提供があります</p>
         <ul>
           <li>バイキングで提供しているものです</li>
           <li>バイト後にどうぞ</li>
@@ -618,78 +873,78 @@
   </section>
 
   <section class="atmosphere" id="atmosphere">
-    <h2>Q&A</h2>
+    <h2><i class="fas fa-question-circle"></i> Q&A</h2>
 
     <div class="card qa-card">
-      <div class="question">Q. どんな人が働いていますか？</div>
+      <div class="question">どんな人が働いていますか？</div>
       <div class="answer">
-        <p>A. 現在<span style="color: red;">〇〇の学生</span>が多く活躍しております。</p>
+        <p>現在<span class="highlight">〇〇の学生</span>が多く活躍しております。</p>
         <p>同じ学部の方はもちろん、他学部・他大学の方もお待ちしております！</p>
       </div>
     </div>
+
     <div class="card qa-card">
-      <div class="question">Q. 1日に何人くらい働いていますか？</div>
+      <div class="question">1日に何人くらい働いていますか？</div>
       <div class="answer">
-        <p>A. 学生バイトは<span style="color: red;">3〜5人</span>です。</p>
+        <p>学生バイトは<span class="highlight">3〜5人</span>です。</p>
         <p>加えて社員やパートの方々と一緒に働いております。</p>
       </div>
     </div>
 
     <div class="card qa-card">
-      <div class="question">Q. シフトの頻度はどのくらいですか？</div>
+      <div class="question">シフトの頻度はどのくらいですか？</div>
       <div class="answer">
-        <p>A. 週に<span style="color: red;">１〜３日</span>の方が多いです。</p>
-        <p>多い人だと週に６日間働いたり、土日に朝・夜の両方で働く方もいます。</p>
+        <p>週に<span class="highlight">1〜3日</span>の方が多いです。</p>
+        <p>多い人だと週に6日間働いたり、土日に朝・夜の両方で働く方もいます。</p>
         <p>朝と夜があるため履修登録に応じて働き方を変えることができます。</p>
       </div>
     </div>
 
     <div class="card qa-card">
-      <div class="question">Q. 服装に決まりはありますか？</div>
-      <div class="answer">A. <span style="color: red;">Tシャツを購入</span>していただきます。（２枚で円）</p>
+      <div class="question">服装に決まりはありますか？</div>
+      <div class="answer">
+        <p><span class="highlight">Tシャツを購入</span>していただきます。（2枚で〇〇円）</p>
         <p>ズボンに関しては自由ですが、派手なものはご遠慮ください。</p>
       </div>
     </div>
 
     <div class="card qa-card">
-      <div class="question">Q. 通勤手段は？</div>
+      <div class="question">通勤手段は？</div>
       <div class="answer">
-        <p>A. <span style="color: red;">車や自転車</span>の方が多いです。</p>
-        <p>原付・バイク用の駐輪場もございます。<a href="#access" class="tab">駐車場</a></p>
+        <p><span class="highlight">車や自転車</span>の方が多いです。</p>
+        <p>原付・バイク用の駐輪場もございます。<a href="#access" class="link-button">駐車場はこちら</a></p>
       </div>
     </div>
 
     <div class="card qa-card">
-      <div class="question">Q. 友達と応募しても大丈夫ですか？</div>
+      <div class="question">友達と応募しても大丈夫ですか？</div>
       <div class="answer">
-        <p>A. ぜひ！皆さまお誘いあわせのうえ、<span style="color: red;">代表者の方1名</span>が応募フォームからお申し込みください。</p>
+        <p>ぜひ！皆さまお誘いあわせのうえ、<span class="highlight">代表者の方1名</span>が応募フォームからお申し込みください。</p>
       </div>
     </div>
   </section>
 
   <section class="form" id="form">
-    <h2>応募フォーム</h2>
+    <h2><i class="fas fa-edit"></i> 応募フォーム</h2>
 
     <div class="card" style="text-align: center;">
-      <p>　</p>
       <p>バイトのお申込みはこちらから↓</p>
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSd11-sAh7V1OJ_15l2_tCHFjh-cCd67yH134GS6yGLmKIdq0A/viewform?usp=sf_link"
         class="form-button" target="_blank">
-        応募フォームを開く
+        <i class="fas fa-paper-plane"></i> 応募フォームを開く
       </a>
-      <p>　</p>
-      <h3 style="text-align: left;">　必要事項</h3>
+      <h3 style="text-align: left;">必要事項</h3>
       <ul>
         <li style="text-align: left;">氏名</li>
         <li style="text-align: left;">メールアドレス</li>
         <li style="text-align: left;">電話番号</li>
-        <li style="text-align: left;">面接希望日(候補日３日以上)</li>
+        <li style="text-align: left;">面接希望日(候補日3日以上)</li>
         <li style="text-align: left;">面接時間は(~)の中からお願いいたします</li>
       </ul>
     </div>
 
     <div class="card">
-      <h3>　お申込が済んだら</h3>
+      <h3>お申込が済んだら</h3>
       <ul>
         <li>自動で確認メールをお送りします</li>
         <li>確認メールが届いてお申込み完了です</li>
@@ -699,16 +954,13 @@
     </div>
 
     <div class="card">
-      <h3>　面接当日の流れ</h3>
+      <h3>面接当日の流れ</h3>
       <ul>
         <li>『履歴書』をお持ちください</li>
         <li>正面玄関より入り受付に面接の旨をお伝えください</li>
-        <li>当日は車でお越しいただいても構いません</li>
-        <a href="#access" class="tab">駐車場</a>
-        </li>
+        <li>当日は車でお越しいただいても構いません <a href="#access" class="link-button">駐車場はこちら</a></li>
       </ul>
-      <p>　</p>
-      <h3>　面接内容(15分程度)</h3>
+      <h3>面接内容(15分程度)</h3>
       <ul>
         <li>履歴書の確認</li>
         <li>出勤予定日数の確認</li>
@@ -719,18 +971,20 @@
   </section>
 
   <section class="access" id="access">
-    <h2>アクセス</h2>
+    <h2><i class="fas fa-map-marker-alt"></i> アクセス</h2>
 
     <div class="card map-card">
-      <h3>○○施設</h3>
-      <p>〒　住所</p>
-      <p>TEL: 電話番号</p>
+      <h3>〇〇旅館</h3>
+      <p>〒 〇〇〇-〇〇〇〇</p>
+      <p>住所: 〇〇県〇〇市〇〇町〇〇-〇〇</p>
+      <p>TEL: 〇〇〇-〇〇〇〇-〇〇〇〇</p>
       <a href="https://goo.gl/maps/..." class="map-link" target="_blank">
-        Googleマップで確認する
+        <i class="fas fa-map-marked-alt"></i> Googleマップで確認する
       </a>
     </div>
+
     <div class="card image-card">
-      <img src="pictures/車駐車場.jpg" alt="駐車場">
+      <img src="pictures/車駐車場.jpg" alt="駐車場の様子">
       <div class="image-card-content">
         <h3>車でお越しの方</h3>
         <p>車の方はこちらの駐車場をご利用いただけます。看板が目印です。</p>
@@ -738,7 +992,7 @@
     </div>
 
     <div class="card image-card">
-      <img src="pictures/自転車駐車場.jpg" alt="駐輪場">
+      <img src="pictures/自転車駐車場.jpg" alt="駐輪場の様子">
       <div class="image-card-content">
         <h3>自転車・原付・バイクでお越しの方</h3>
         <p>自転車・原付・バイクの方々は駐車場の向かい側にございます駐輪場をご利用いただけます。</p>
@@ -754,10 +1008,10 @@
     function updateView() {
       if (isMobileView) {
         document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=1200');
-        switchViewBtn.textContent = 'スマホ版へ';
+        switchViewBtn.innerHTML = '<i class="fas fa-mobile-alt"></i> スマホ版へ';
       } else {
         document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=1.0');
-        switchViewBtn.textContent = 'PC版へ';
+        switchViewBtn.innerHTML = '<i class="fas fa-desktop"></i> PC版へ';
       }
       isMobileView = !isMobileView;
     }
@@ -768,7 +1022,7 @@
 
     // ページ読み込み時の処理
     window.addEventListener('load', function () {
-      document.querySelector('#start').scrollIntoView();
+      document.querySelector('#start').scrollIntoView({ behavior: 'smooth' });
     });
 
     // タブのアクティブ状態管理
@@ -778,16 +1032,16 @@
     window.addEventListener('scroll', () => {
       let current = '';
       sections.forEach(section => {
-        const sectionTop = section.offsetTop - 130;
+        const sectionTop = section.offsetTop - 100;
         if (pageYOffset >= sectionTop) {
           current = section.getAttribute('id');
         }
       });
 
       tabs.forEach(tab => {
-        tab.style.backgroundColor = '#F08080';
+        tab.classList.remove('active');
         if (tab.getAttribute('href') === `#${current}`) {
-          tab.style.backgroundColor = '#FF6347';
+          tab.classList.add('active');
         }
       });
     });
@@ -803,7 +1057,10 @@
     document.querySelectorAll('.image-card img').forEach(img => {
       img.addEventListener('click', function () {
         loader.style.display = 'block';
-        modal.style.display = "block";
+        modal.style.display = "flex";
+        setTimeout(() => {
+          modal.classList.add('show');
+        }, 10);
         modalImg.src = this.src;
         caption.textContent = this.alt || '';
       });
@@ -821,31 +1078,46 @@
 
     // 閉じるボタンでモーダルを閉じる
     closeBtn.addEventListener('click', () => {
-      modal.style.display = "none";
+      modal.classList.remove('show');
+      setTimeout(() => {
+        modal.style.display = "none";
+      }, 300);
     });
 
     // モーダルの外側クリックで閉じる
-    window.addEventListener('click', function (event) {
+    modal.addEventListener('click', function (event) {
       if (event.target === modal) {
-        modal.style.display = "none";
+        modal.classList.remove('show');
+        setTimeout(() => {
+          modal.style.display = "none";
+        }, 300);
       }
     });
 
     // ESCキーでモーダルを閉じる
     document.addEventListener('keydown', function (event) {
-      if (event.key === "Escape" && modal.style.display === "block") {
-        modal.style.display = "none";
+      if (event.key === "Escape" && modal.style.display === "flex") {
+        modal.classList.remove('show');
+        setTimeout(() => {
+          modal.style.display = "none";
+        }, 300);
       }
     });
-  </script>
 
-  <!-- モーダル本体 -->
-  <div id="imageModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="expandedImage">
-    <div id="caption"></div>
-  </div>
-  <div class="loader"></div>
+    // スムーズスクロール
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 70,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
