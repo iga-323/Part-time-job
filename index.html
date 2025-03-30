@@ -96,7 +96,7 @@
     }
 
     .banner-inner {
-      display: inline-flex;
+      display: inline-block;
       align-items: center;
       padding: 0 20px;
       margin: 0 auto;
@@ -588,8 +588,15 @@
       }  
   
       .banner-inner {
-        justify-content: center; /* 中央揃えを確実に */
-        max-width: 1200px; /* コンテンツの最大幅に合わせる */
+        display: flex; /* flexレイアウトに変更 */
+        justify-content: center; /* 子要素を中央揃え */
+        align-items: center;
+        max-width: 1200px; /* コンテンツ幅に合わせる */
+        margin: 0 auto; /* 中央寄せ */
+        padding: 0;
+      }
+      .tab {
+          margin: 0 10px; /* タブ間の余白調整 */
       }
 
       .image-card {
