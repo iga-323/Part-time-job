@@ -88,6 +88,7 @@
       white-space: nowrap;
       scrollbar-width: none;
       padding: 12px 0;
+      text-algin: center;
     }
 
     .banner::-webkit-scrollbar {
@@ -98,6 +99,7 @@
       display: inline-flex;
       align-items: center;
       padding: 0 20px;
+      margin: 0 auto;
     }
 
     .tab {
@@ -580,9 +582,14 @@
     }
 
     /* PC用レイアウト */
-    @media screen and (min-width: 769px) {
+   @media screen and (min-width: 769px) {
+      .banner {
+        overflow-x: visible; /* スクロールを無効化 */
+      }  
+  
       .banner-inner {
-        justify-content: center;
+        justify-content: center; /* 中央揃えを確実に */
+        max-width: 1200px; /* コンテンツの最大幅に合わせる */
       }
 
       .image-card {
